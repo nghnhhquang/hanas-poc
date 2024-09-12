@@ -29,7 +29,7 @@ services:
     environment:
       - TZ=Asia/Jakarta
   nginx:
-    image: nghnhhquang/ranger-nginx:latest
+    image: nghnhhquang/ranger-nginx-poc:latest
     ports:
       - 8080:8080
       - 11000:11000
