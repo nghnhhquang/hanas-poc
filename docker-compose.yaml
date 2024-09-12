@@ -1,0 +1,84 @@
+services:
+  gateway:
+    image: nghnhhquang/ranger-gateway:latest
+    depends_on:
+      - redis
+      - ranger
+    environment:
+      - TZ=Asia/Jakarta
+      - ASPNETCORE_ENVIRONMENT=ports
+    extra_hosts:
+      - "vault.katalyst.local:192.168.1.94"
+      - "minio:192.168.1.152"
+      - "dremio:192.168.1.159"
+      - "datahub:192.168.1.53"
+      - "dataiku:192.168.1.117"
+      - "confluent:192.168.1.154"
+      - "nifi:192.168.1.155"
+      - "airflow:192.168.1.158"
+      - "jupyter:192.168.1.157"
+      - "workflow:192.168.1.64"
+  ranger:
+    image: nghnhhquang/ranger-admin:latest
+    depends_on:
+      ranger-zk:
+        condition: service_started
+      ranger-db:
+        condition: service_healthy
+      ranger-solr:
+        condition: service_started      
+    environment:
+      - TZ=Asia/Jakarta
+  nginx:
+    image: nghnhhquang/ranger-nginx:latest
+    ports:
+      - 5500:18880
+      - 5503:11000
+      - 5506:9002
+      - 5511:6080
+      - 5513:5001
+    extra_hosts:
+      - "minio:192.168.1.152"
+      - "dremio:192.168.1.159"
+      - "datahub:192.168.1.53"
+      - "dataiku:192.168.1.117"
+      - "confluent:192.168.1.154"
+      - "nifi:192.168.1.155"
+      - "airflow:192.168.1.158"
+      - "jupyter:192.168.1.157"
+      - "workflow:192.168.1.64"
+    depends_on:
+      - gateway
+      - ranger
+    environment:
+      - TZ=Asia/Jakarta
+  ranger-db:
+    image: nghnhhquang/ranger-postgres:latest
+    healthcheck:
+      test: 'su -c "pg_isready -q" postgres'
+      interval: 10s
+      timeout: 2s
+      retries: 30
+    environment:
+      - TZ=Asia/Jakarta
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+  ranger-zk:
+    image: nghnhhquang/ranger-zk:latest
+    environment:
+      - TZ=Asia/Jakarta
+  ranger-solr:
+    image: nghnhhquang/ranger-solr:latest
+    command:
+      - solr-precreate
+      - ranger_audits
+      - /opt/solr/server/solr/configsets/ranger_audits/
+    environment:
+      - TZ=Asia/Jakarta
+    volumes:
+      - solr-data:/var/solr/data/
+  redis:
+    image: redis
+volumes:
+  postgres-data:
+  solr-data:
