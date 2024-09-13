@@ -51,7 +51,7 @@ services:
     environment:
       - TZ=Asia/Jakarta
   nginx:
-    image: nghnhhquang/ranger-nginx-poc:latest
+    image: nginx:alpine
     ports:
       - 8080:8080
       - 11000:11000
@@ -77,6 +77,9 @@ services:
       - ranger
     environment:
       - TZ=Asia/Jakarta
+    volumes:
+      - ./nginx-default.conf:/etc/nginx/conf.d/default.conf
+      - ./certs:/etc/nginx/certs
   ranger-db:
     image: nghnhhquang/ranger-postgres:latest
     healthcheck:
