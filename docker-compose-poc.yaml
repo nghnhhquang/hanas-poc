@@ -8,7 +8,6 @@ services:
       - TZ=Asia/Jakarta
       - ASPNETCORE_ENVIRONMENT=ports
     extra_hosts:
-      - "datahub:datahub-datahub-frontend-react-1"
       - "dataiku:192.168.121.41"
       - "confluent:192.168.121.42"
       - "jbpm:192.168.128.41"
@@ -37,7 +36,6 @@ services:
       - 8200:8200
       - 9021:9021
     extra_hosts:
-      - "datahub:datahub-datahub-frontend-react-1"
       - "dataiku:192.168.121.41"
       - "confluent:192.168.121.42"
       - "jbpm:192.168.128.41"
