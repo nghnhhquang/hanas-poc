@@ -1,0 +1,51 @@
+services:
+  redis:
+    image: redis
+  rhpam-iafs:
+    image: nghnhhquang/pam-portal
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - 5001:5001
+    depends_on:
+      - redis
+  rhpam-iafs-api:
+    image: nghnhhquang/pam-portal
+    deploy:
+      mode: replicated
+      replicas: 2
+    depends_on:
+      - redis
+    command:
+    - dotnet
+    - run
+    - --project
+    - ./rhpam-iafs-api/src/rhpam-iafs-api/rhpam-iafs-api.csproj
+    - --urls
+    - http://0.0.0.0:5011
+  iafs-maths-engine:
+    image: nghnhhquang/pam-portal
+    ports:
+      - 5002:5002
+    depends_on:
+      - redis
+    command:
+    - dotnet
+    - run
+    - --project
+    - ./iafs-maths-engine/iafs-maths-engines.csproj
+    - --urls
+    - http://0.0.0.0:5002
+  jbpm:
+    image: thongdq3108/jbpm-server-full
+    environment:
+      JBPM_DB_DRIVER: oracle
+    ports:
+    - 8001:8001
+  nginx:
+    image: nginx
+    ports:
+    - 8080:8080
+    volumes:
+      - ./nginx-default.conf:/etc/nginx/conf.d/default.conf
+
