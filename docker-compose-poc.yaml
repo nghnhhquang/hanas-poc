@@ -43,6 +43,11 @@ services:
       - "autovault:192.168.128.41"
       - "chatbot:192.168.128.41"
       - "erd:192.168.128.41"
+    networks:
+      - default
+      - datahub_network
+    external_links:
+      - datahub-frontend-react:datahub
     depends_on:
       - gateway
       - ranger
@@ -78,3 +83,9 @@ services:
 volumes:
   postgres-data:
   solr-data:
+networks:
+  default:
+    name: hanas-poc_default
+  datahub_network:
+    external: true
+    name: datahub_network
