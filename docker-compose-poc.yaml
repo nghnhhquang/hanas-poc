@@ -1,17 +1,11 @@
 services:
   vault:
     image: hashicorp/vault:1.17.2
-    environment:
-      VAULT_ADDR: "https://vault.hanas.io"
-      VAULT_API_ADDR: "https://vault.hanas.io"
-      VAULT_ADDRESS: "https://vault.hanas.io"
-      # VAULT_UI: true
-      # VAULT_TOKEN:
     restart: always
     volumes:
       - vault-logs:/vault/logs/:rw
       - vault-data:/vault/data/:rw
-      - ./plugins:/vault/plugins/:rw
+      - ./plugin:/vault/plugin/:rw
       - ./config:/vault/config/:rw
     cap_add:
       - IPC_LOCK
