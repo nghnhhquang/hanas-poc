@@ -47,7 +47,7 @@ services:
       - default
       - datahub_network
     external_links:
-      - datahub-frontend-react:datahub
+      - datahub:datahub-frontend-react
     depends_on:
       - gateway
       - ranger
