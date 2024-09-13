@@ -75,7 +75,6 @@ services:
     depends_on:
       - gateway
       - ranger
-      - vault
     environment:
       - TZ=Asia/Jakarta
   ranger-db:
