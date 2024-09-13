@@ -19,6 +19,8 @@ services:
     environment:
       - TZ=Asia/Jakarta
       - ASPNETCORE_ENVIRONMENT=poc
+    volumes:
+      - ./appsettings.poc.json:/app/appsettings.poc.json
     extra_hosts:
       - "vault.hanas.io:192.168.128.41"
       - "dataiku:192.168.121.41"
