@@ -18,7 +18,7 @@ services:
       - vault
     environment:
       - TZ=Asia/Jakarta
-      - ASPNETCORE_ENVIRONMENT=ports
+      - ASPNETCORE_ENVIRONMENT=poc
     extra_hosts:
       - "vault.hanas.io:127.0.0.1"
       - "dataiku:192.168.121.41"
