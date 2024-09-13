@@ -53,6 +53,7 @@ services:
   nginx:
     image: nginx:alpine
     ports:
+      - 443:443
       - 8080:8080
       - 11000:11000
       - 9002:9002
