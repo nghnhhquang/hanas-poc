@@ -44,10 +44,11 @@ services:
       - "chatbot:192.168.128.41"
       - "erd:192.168.128.41"
     networks:
-      - default
-      - datahub_network
+      default:
+      datahub_network:
+        name: datahub_network
     external_links:
-      - datahub:datahub-frontend-react
+      - datahub-datahub-frontend-react-1:datahub
     depends_on:
       - gateway
       - ranger
