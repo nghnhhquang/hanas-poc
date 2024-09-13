@@ -32,7 +32,7 @@ services:
       default:
       datahub_network:
     external_links:
-      - datahub-datahub-frontend-react:datahub
+      - datahub-datahub-frontend-react-1:datahub
   ranger:
     image: nghnhhquang/ranger-admin:latest
     depends_on:
@@ -66,7 +66,7 @@ services:
       default:
       datahub_network:
     external_links:
-      - datahub-datahub-frontend-react:datahub
+      - datahub-datahub-frontend-react-1:datahub
     depends_on:
       - gateway
       - ranger
