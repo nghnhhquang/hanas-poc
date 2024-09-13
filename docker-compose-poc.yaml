@@ -46,7 +46,6 @@ services:
     networks:
       default:
       datahub_network:
-        name: datahub_network
     external_links:
       - datahub-datahub-frontend-react-1:datahub
     depends_on:
