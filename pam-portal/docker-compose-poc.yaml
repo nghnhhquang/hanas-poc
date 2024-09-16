@@ -67,7 +67,8 @@ services:
       JBPM_DB_DRIVER: postgres
       JBPM_DB_HOST: postgres
     ports:
-    - 9083:8080
+    - 8001:8001
+    - 9093:8080
     depends_on:
     - postgres
 volumes:
