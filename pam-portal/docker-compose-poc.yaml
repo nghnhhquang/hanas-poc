@@ -18,7 +18,6 @@ services:
     - redis
     volumes:
     - ./rhpam-iafs.json:/src/rhpam-iafs/appsettings.Development.json
-    - rhpam-language-data:/src/rhpam-iafs/LanguageData
     - rhpam-log-data:/src/rhpam-iafs/LogFile
   rhpam-iafs-api:
     image: nghnhhquang/pam-portal
@@ -73,5 +72,4 @@ services:
     - postgres
 volumes:
   postgres_data:
-  rhpam-language-data:
   rhpam-log-data:
