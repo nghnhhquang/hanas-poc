@@ -4,7 +4,7 @@ services:
   rhpam-iafs:
     image: nghnhhquang/pam-portal
     environment:
-    - ASPNETCORE_ENVIRONMENT=poc
+    - ASPNETCORE_ENVIRONMENT=Development
     ports:
     - 2888:5001
     command: 
@@ -17,7 +17,7 @@ services:
     depends_on:
     - redis
     volumes:
-      - ./rhpam-iafs.json:/src/rhpam-iafs/appsettings.poc.json
+      - ./rhpam-iafs.json:/src/rhpam-iafs/appsettings.Development.json
   rhpam-iafs-api:
     image: nghnhhquang/pam-portal
     #http://14.241.249.100:7979/katalyst1/shinhan_pam.git
@@ -27,9 +27,9 @@ services:
     depends_on:
     - redis
     environment:
-    - ASPNETCORE_ENVIRONMENT=poc
+    - ASPNETCORE_ENVIRONMENT=Development
     volumes:
-      - ./rhpam-iafs-api.json:/src/rhpam-iafs-api/src/rhpam-iafs-api/rhpam-iafs-api/appsettings.poc.json
+      - ./rhpam-iafs-api.json:/src/rhpam-iafs-api/src/rhpam-iafs-api/rhpam-iafs-api/appsettings.Development.json
     command:
     - dotnet
     - run
@@ -42,9 +42,9 @@ services:
     depends_on:
     - redis
     environment:
-    - ASPNETCORE_ENVIRONMENT=poc
+    - ASPNETCORE_ENVIRONMENT=Development
     volumes:
-      - ./iafs-maths-engine.json:/src/iafs-maths-engine/appsettings.poc.json
+      - ./iafs-maths-engine.json:/src/iafs-maths-engine/appsettings.Development.json
     command:
     - dotnet
     - run
