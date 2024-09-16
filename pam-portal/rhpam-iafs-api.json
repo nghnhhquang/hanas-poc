@@ -1,0 +1,54 @@
+{
+  "Serilog": {
+    "SeqServerUrl": null,
+    "LogstashgUrl": null,
+    "FilePath": "logs/log.txt",
+    "MinimumLevel": {
+      "Default": "Information",
+      "Override": {
+        "Microsoft": "Warning",
+        "System": "Warning"
+      }
+    }
+  },
+  "AllowedHosts": "*",
+  "ListProperty": "{\"ListProperty\": [\"shb:IDNo##ad_IDNo@@af_IDNo\",\"shb:CustomerName##ad_Name@@af_Name\",\"shb:ProgramCode##ad_Program@@af_Program\",\"shb:CIFNo##ad_CIFNo\",\"shb:CompanyName##ad_CompanyName@@af_CompanyName\",\"shb:HostBranch##af_HostBranch@@udf_String10\",\"shb:OtherID##ad_OtherID@@af_OtherID\",\"shb:SaleBranch##af_SaleBranch@@udf_String09\"]}",
+  "SplitKey": "V$EmP@tK!",
+  "DateKey": "java.util.Date",
+  "DateTimeKey": "java.util.DateTime",
+  "TimeKey": "java.util.Time",
+  "BoolKey": "java.util.Bool",
+  "IntervalSecond": 1,
+  "SocketSchedule": false,
+  "SocketMethod":"Sync",
+  "SocketIP":"127.0.0.1",
+  "SocketPort":"12345", 
+  "AITHERMode":"Local", 
+  "SaveToDBSchedule":true,
+  "MaxSeccondOfTry": 240,
+  "MaxConcurrency": 20,
+  "ECMClientUrl": "http://14.241.249.100:8082",
+  "Cors": {
+    "Domains": "http://localhost:5001,http://14.241.249.100:5001"
+  },
+  "ConnectionStrings": {
+    "iaSystemDataConString": "Server=192.168.1.164;Database=iaSystemDb;User Id=sa;Password=Sa@12345",
+    "IaSystemDataConStringOracle": "Data Source=192.168.112.18:1521/MDMPOC;User Id=workflow;Password=MDM#123;"
+  },
+  "Provider": "ORACLE",
+  "RedisSetting": {
+    "Host": "redis",
+    "Port": 6379,
+    "InstanceName": "localhost"
+  },
+  "Ticket": {
+    "UserId": "admin",
+    "Password": "admin"
+  },
+  "SocketInfo": {
+    "Host": "127.0.0.1",
+    "Port": "21211",
+    "Retries": 5
+  },
+  "PortalClientUrl": "http://rhpam-iafs:5001"
+}

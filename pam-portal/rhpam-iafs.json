@@ -1,0 +1,56 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Debug",
+      "System": "Information",
+      "Microsoft": "Information",
+      "Microsoft.EntityFrameworkCore.Database.Command":  "Information"
+    }
+  },
+  "AllowedHosts": "*",
+  "redis": {
+    "host": "redis",
+    "port": 6379,
+    "name": "localhost"
+  },
+  "AppConfig": {
+    "DefaultPassword": "12345"
+  },
+  "AppSettings": {
+    "SiteTitle": "Katalyst FAST Portal",
+    "RootUser": "portaladmin",
+    "CanNotDeleteSystemMenuIds": "c255f730-3f12-4e71-8b5a-8707f3151f22,41200757-8995-4555-b199-607d922e7fd5,57028250-0bbd-402a-abfd-8a254277a756,de97ee1d-87d3-49fb-b840-9496d6aff060,5fa141e4-72d0-4bf0-809f-eb1114bbd5ca"
+  },
+  "CommonKeys": {
+    "PamSystemFlag": "PamSystemFlag",
+    "PamConfigRedisKey": "PamConfigRedisKey"
+  },
+  "ConnectionStrings": {
+    "IaSystemDataConStringSQL": "Server=192.168.1.24;Database=iaSystemDb;User Id=sa;Password=Sa@12345",
+    "IaSystemDataConStringOracle": "Data Source=192.168.112.18:1521/MDMPOC;User Id=workflow;Password=MDM#123;"
+  },
+  "IAFSApi": {
+    "Protocol": "http",
+    "Host": "rhpam-iafs-api",
+    "Port": "5011",
+    "ApiPath": "/api/v1"
+  },
+  "IFASEngineApi": {
+    "Protocol": "http",
+    "Host": "iafs-maths-engine",
+    "Port": "5002",
+    "ApiPath": ""
+  },
+  "IAFSOCR": {
+    "Protocol": "http",
+    "Host": "192.168.1.117",
+    "Port": "4444"
+  },
+  "IAFSSocket": {
+    "Protocol": "http",
+    "Host": "localhost",
+    "Port": "5003",
+    "ApiPath": "/api/v1"
+  },
+  "Provider": "ORACLE"
+}

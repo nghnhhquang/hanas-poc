@@ -1,0 +1,64 @@
+{
+    "Logging": {
+        "LogLevel": {
+            "Default": "Information",
+            "Microsoft": "Warning",
+            "Microsoft.Hosting.Lifetime": "Information"
+        }
+    },
+    "AllowedHosts": "*",
+    "ConnectionStrings": {
+        "SqlConnStrName": "Server=localhost;Database=iaSystemDb;User Id=sa;Password=Sa@12345",
+        "OrcConnStrName": "Data Source=192.168.112.18:1521/MDMPOC;User Id=workflow;Password=MDM#123;"
+    },
+    "RedisSetting": {
+        "Host": "redis",
+        "Port": 6379,
+        "InstanceName": "localhost"
+    },
+    "Excel": {
+        "DataGroup": "DATA_GROUP",
+        "TableGroup": "TABLE_GROUP",
+        "RefIn": "IN_",
+        "RefOut": "OUT_",
+        "RefInOut": "INOUT_",
+        "DataIn": "DATA_IN",
+        "DataOut": "DATA_OUT"
+    },
+    "Ticket": {
+        "UserId": "admin",
+        "Password": "admin"
+    },
+    "Cors": {
+        "Domains": "http://localhost:5001"
+    },
+    "EPPlus": {
+        "ExcelPackage": {
+            "LicenseContext": "NonCommercial"
+        }
+    },
+    "Serilog": {
+        "SeqServerUrl": null,
+        "LogstashgUrl": null,
+        "FilePath": "logs/log.txt",
+        "MinimumLevel": {
+            "Default": "Information",
+            "Override": {
+                "Microsoft": "Warning",
+                "System": "Warning"
+            }
+        }
+    },
+    "IAFSApi": {
+        "Protocol": "http",
+        "Host": "rhpam-iafs-api",
+        "Port": "5011",
+        "ApiPath": "/api/v1"
+    },
+    "TempFolder": "%TEMP%",
+    "DebugMode": false,
+    "ExcelDebugMode": true,
+    "Provider": "ORACLE",
+    "CalculatorPath": "Calculator",
+    "TestMode": "0"
+}
