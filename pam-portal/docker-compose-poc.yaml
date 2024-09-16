@@ -17,7 +17,9 @@ services:
     depends_on:
     - redis
     volumes:
-      - ./rhpam-iafs.json:/src/rhpam-iafs/appsettings.Development.json
+    - ./rhpam-iafs.json:/src/rhpam-iafs/appsettings.Development.json
+    - rhpam-language-data:/src/rhpam-iafs/LanguageData
+    - rhpam-log-data:/src/rhpam-iafs/LogFile
   rhpam-iafs-api:
     image: nghnhhquang/pam-portal
     #http://14.241.249.100:7979/katalyst1/shinhan_pam.git
@@ -29,7 +31,7 @@ services:
     environment:
     - ASPNETCORE_ENVIRONMENT=Development
     volumes:
-      - ./rhpam-iafs-api.json:/src/rhpam-iafs-api/src/rhpam-iafs-api/rhpam-iafs-api/appsettings.Development.json
+    - ./rhpam-iafs-api.json:/src/rhpam-iafs-api/src/rhpam-iafs-api/rhpam-iafs-api/appsettings.Development.json
     command:
     - dotnet
     - run
@@ -44,7 +46,7 @@ services:
     environment:
     - ASPNETCORE_ENVIRONMENT=Development
     volumes:
-      - ./iafs-maths-engine.json:/src/iafs-maths-engine/appsettings.Development.json
+    - ./iafs-maths-engine.json:/src/iafs-maths-engine/appsettings.Development.json
     command:
     - dotnet
     - run
@@ -71,3 +73,4 @@ services:
     - postgres
 volumes:
   postgres_data:
+  rhpam-language-data:
