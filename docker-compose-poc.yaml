@@ -104,6 +104,58 @@ services:
       - solr-data:/var/solr/data/
   redis:
     image: redis
+  rhpam-iafs:
+    image: nghnhhquang/pam-portal
+    environment:
+    - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+    - 5001:5001
+    depends_on:
+    - redis
+  rhpam-iafs-api:
+    image: nghnhhquang/pam-portal
+    deploy:
+      mode: replicated
+      replicas: 2
+    depends_on:
+    - redis
+    command:
+    - dotnet
+    - run
+    - --project
+    - ./rhpam-iafs-api/src/rhpam-iafs-api/rhpam-iafs-api.csproj
+    - --urls
+    - http://0.0.0.0:5011
+  iafs-maths-engine:
+    image: nghnhhquang/pam-portal
+    ports:
+    - 5002:5002
+    depends_on:
+    - redis
+    command:
+    - dotnet
+    - run
+    - --project
+    - ./iafs-maths-engine/iafs-maths-engines.csproj
+    - --urls
+    - http://0.0.0.0:5002
+  postgres:
+    image: postgres:9.6
+    volumes:
+    - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: jbpm
+      POSTGRES_USER: jbpm
+      POSTGRES_PASSWORD: jbpm
+  jbpm:
+    image: thongdq3108/jbpm-server-full:latest
+    environment:
+      JBPM_DB_DRIVER: postgres
+      JBPM_DB_HOST: postgres
+    ports:
+    - 8001:8001
+    depends_on:
+    - postgres
 volumes:
   postgres-data:
   solr-data:
