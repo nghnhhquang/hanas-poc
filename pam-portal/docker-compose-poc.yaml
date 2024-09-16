@@ -74,3 +74,4 @@ services:
 volumes:
   postgres_data:
   rhpam-language-data:
+  rhpam-log-data:
