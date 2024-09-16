@@ -109,8 +109,6 @@ services:
     image: nghnhhquang/pam-portal
     environment:
     - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-    - 5001:5001
     depends_on:
     - redis
   rhpam-iafs-api:
@@ -129,8 +127,6 @@ services:
     - http://0.0.0.0:5011
   iafs-maths-engine:
     image: nghnhhquang/pam-portal
-    ports:
-    - 5002:5002
     depends_on:
     - redis
     command:
