@@ -60,8 +60,6 @@ services:
     extra_hosts:
       - "dataiku:192.168.121.41"
       - "confluent:192.168.121.42"
-      - "jbpm:192.168.128.41"
-      - "workflow:192.168.128.41"
       - "autovault:192.168.128.41"
       - "chatbot:192.168.128.41"
       - "erd:192.168.128.41"
@@ -73,6 +71,8 @@ services:
     depends_on:
       - gateway
       - ranger
+      - jbpm
+      - rhpam-iafs
     environment:
       - TZ=Asia/Jakarta
     volumes:
