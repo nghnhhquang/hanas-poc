@@ -16,6 +16,7 @@ services:
       - redis
       - ranger
       - vault
+      - nginx
     environment:
       - TZ=Asia/Jakarta
       - ASPNETCORE_ENVIRONMENT=poc
@@ -70,9 +71,6 @@ services:
       datahub_network:
     external_links:
       - datahub-datahub-frontend-react-1:datahub
-    depends_on:
-      - gateway
-      - ranger
     environment:
       - TZ=Asia/Jakarta
     volumes:
