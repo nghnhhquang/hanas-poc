@@ -36,11 +36,7 @@ services:
       - "autovault:192.168.128.41"
       - "chatbot:192.168.128.41"
       - "erd:192.168.128.41"
-    networks:
-      default:
-      datahub_network:
-    external_links:
-      - datahub-datahub-frontend-react-1:datahub
+      - "datahub:192.168.128.41"
   ranger:
     image: nghnhhquang/ranger-admin:latest
     depends_on:
@@ -72,11 +68,7 @@ services:
       - "gateway:192.168.128.41"
       - "jbpm:192.168.128.41"
       - "vault:192.168.128.41"
-    networks:
-      default:
-      datahub_network:
-    external_links:
-      - datahub-datahub-frontend-react-1:datahub
+      - "datahub:192.168.128.41"
     environment:
       - TZ=Asia/Jakarta
     volumes:
@@ -136,6 +128,3 @@ volumes:
 networks:
   default:
     name: hanas-poc_default
-  datahub_network:
-    external: true
-    name: datahub_network
