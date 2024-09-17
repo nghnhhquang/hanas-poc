@@ -111,7 +111,7 @@ services:
       POSTGRES_USER: jbpm
       POSTGRES_PASSWORD: jbpm
   jbpm:
-    image: thongdq3108/jbpm-server-full:latest
+    image: jboss/jbpm-server-full:7.41.0.Final
     environment:
       JBPM_DB_DRIVER: postgres
       JBPM_DB_HOST: postgres
