@@ -23,6 +23,8 @@ services:
     environment:
       - TZ=Asia/Jakarta
       - ASPNETCORE_ENVIRONMENT=poc
+    ports:
+      - 5500:8080
     volumes:
       - ./appsettings.poc.json:/app/appsettings.poc.json
     extra_hosts:
@@ -67,6 +69,9 @@ services:
       - "autovault:192.168.128.41"
       - "chatbot:192.168.128.41"
       - "erd:192.168.128.41"
+      - "gateway:192.168.128.41"
+      - "jbpm:192.168.128.41"
+      - "vault:192.168.128.41"
     networks:
       default:
       datahub_network:
@@ -119,6 +124,7 @@ services:
       JBPM_DB_HOST: postgres
     ports:
       - 8001:8001
+      - 5501:8080
     depends_on:
       - postgres
 volumes:
