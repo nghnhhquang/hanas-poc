@@ -9,7 +9,7 @@ services:
       - ./config:/vault/config/:rw
       - ./certs:/etc/certs/:z
     ports:
-      - 8200:8200
+      - 5502:8200
     cap_add:
       - IPC_LOCK
     entrypoint: vault server -config /vault/config/config.hcl
@@ -116,7 +116,7 @@ services:
       JBPM_DB_HOST: postgres
     ports:
       - 8001:8001
-      - 5501:8080
+      - 8200:8080
     depends_on:
       - postgres
 volumes:

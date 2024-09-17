@@ -9,5 +9,5 @@ vault write hanas.io/static-roles/dataiku-admin db_name="dataiku" username="port
 vault write hanas.io/config/rhpam plugin_name="hcpv-dbplugin-rhpam" allowed_roles="*" url="http://192.168.128.41:5501" username="portaladmin" password="12345" pwd="12345" insecure_tls=true
 
 vault write hanas.io/config/workflow plugin_name="hcpv-dbplugin-workflow" allowed_roles="*" url="http://192.168.121.42:5001" pamurl="http://192.168.128.41:5501" username="portaladmin" password="12345" insecure_tls=true
-vault write hanas.io/static-roles/workflow-admin db_name="workflow" username="admin" rotation_period="5d" rotation_statements="{\"allow_create_user\":true,\"roles\":[\"21\"]}"
+vault write hanas.io/static-roles/workflow-admin db_name="workflow" username="admin" rotation_period="5d" rotation_statements="{\"allow_create_user\":true,\"roles\":[\"2\"]}"
 
