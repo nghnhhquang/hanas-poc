@@ -53,24 +53,5 @@ services:
     - ./iafs-maths-engine/iafs-maths-engines.csproj
     - --urls
     - http://0.0.0.0:5002
-  postgres:
-    image: postgres:9.6
-    volumes:
-    - postgres_data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_DB: jbpm
-      POSTGRES_USER: jbpm
-      POSTGRES_PASSWORD: jbpm
-  jbpm:
-    image: thongdq3108/jbpm-server-full:latest
-    environment:
-      JBPM_DB_DRIVER: postgres
-      JBPM_DB_HOST: postgres
-    ports:
-    - 8001:8001
-    - 8080:8080
-    depends_on:
-    - postgres
 volumes:
-  postgres_data:
   rhpam-log-data:
