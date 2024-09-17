@@ -6,7 +6,7 @@ services:
     environment:
     - ASPNETCORE_ENVIRONMENT=Development
     ports:
-    - 2888:5001
+    - 5001:5001
     command: 
     - dotnet
     - run
@@ -68,7 +68,7 @@ services:
       JBPM_DB_HOST: postgres
     ports:
     - 8001:8001
-    - 9093:8080
+    - 8080:8080
     depends_on:
     - postgres
 volumes:
