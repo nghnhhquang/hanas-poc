@@ -9,7 +9,7 @@ services:
       - ./config:/vault/config/:rw
       - ./certs:/etc/certs/:z
     ports:
-      - 5502:8200
+      - 8200:8200
     cap_add:
       - IPC_LOCK
     entrypoint: vault server -config /vault/config/config.hcl
@@ -101,24 +101,14 @@ services:
       - solr-data:/var/solr/data/
   redis:
     image: redis
-  postgres:
-    image: postgres:9.6
-    volumes:
-      - postgres-pam:/var/lib/postgresql/data
-    environment:
-      POSTGRES_DB: jbpm
-      POSTGRES_USER: jbpm
-      POSTGRES_PASSWORD: jbpm
   jbpm:
     image: jboss/jbpm-server-full:7.41.0.Final
     environment:
       JBPM_DB_DRIVER: postgres
-      JBPM_DB_HOST: postgres
+      JBPM_DB_HOST: 192.168.128.41
     ports:
       - 8001:8001
-      - 8200:8080
-    depends_on:
-      - postgres
+      - 5501:8080
 volumes:
   postgres-data:
   postgres-pam:
