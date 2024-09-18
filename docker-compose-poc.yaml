@@ -15,14 +15,15 @@ services:
     entrypoint: vault server -config /vault/config/config.hcl
   gateway:
     image: nghnhhquang/ranger-gateway:latest
+    restart: always
     depends_on:
       - redis
       - ranger
       - vault
       - nginx
     environment:
-      - TZ=Asia/Jakarta
-      - ASPNETCORE_ENVIRONMENT=poc
+      TZ: Asia/Jakarta
+      ASPNETCORE_ENVIRONMENT: poc
     ports:
       - 5500:8080
     volumes:
@@ -39,6 +40,7 @@ services:
       - "datahub:192.168.128.41"
   ranger:
     image: nghnhhquang/ranger-admin:latest
+    restart: always
     depends_on:
       ranger-zk:
         condition: service_started
@@ -47,7 +49,7 @@ services:
       ranger-solr:
         condition: service_started
     environment:
-      - TZ=Asia/Jakarta
+      TZ: Asia/Jakarta
   nginx:
     image: nginx
     restart: always
@@ -70,40 +72,45 @@ services:
       - "vault:192.168.128.41"
       - "datahub:192.168.128.41"
     environment:
-      - TZ=Asia/Jakarta
+      TZ: Asia/Jakarta
     volumes:
       - ./nginx-default.conf:/etc/nginx/conf.d/default.conf
       - ./nginx.conf:/etc/nginx/nginx.conf
       - ./certs:/etc/nginx/certs:z
   ranger-db:
     image: nghnhhquang/ranger-postgres:latest
+    restart: always
     healthcheck:
       test: 'su -c "pg_isready -q" postgres'
       interval: 10s
       timeout: 2s
       retries: 30
     environment:
-      - TZ=Asia/Jakarta
+      TZ: Asia/Jakarta
     volumes:
       - postgres-data:/var/lib/postgresql/data
   ranger-zk:
     image: nghnhhquang/ranger-zk:latest
+    restart: always
     environment:
-      - TZ=Asia/Jakarta
+      TZ: Asia/Jakarta
   ranger-solr:
     image: nghnhhquang/ranger-solr:latest
+    restart: always
     command:
       - solr-precreate
       - ranger_audits
       - /opt/solr/server/solr/configsets/ranger_audits/
     environment:
-      - TZ=Asia/Jakarta
+      TZ: Asia/Jakarta
     volumes:
       - solr-data:/var/solr/data/
   redis:
     image: redis
+    restart: always
   jbpm:
     image: thongdq3108/jbpm-server-full:latest
+    restart: always
     environment:
       JBPM_DB_DRIVER: postgres
       JBPM_DB_HOST: postgres-pam
@@ -112,12 +119,19 @@ services:
       - 5501:8080
   postgres-pam:
     image: postgres:9.6
+    restart: always
     volumes:
     - postgres-pam:/var/lib/postgresql/data
     environment:
+      TZ: Asia/Jakarta
       POSTGRES_DB: jbpm
       POSTGRES_USER: jbpm
       POSTGRES_PASSWORD: jbpm
+    healthcheck:
+      test: 'su -c "pg_isready -q" jbpm'
+      interval: 10s
+      timeout: 2s
+      retries: 30
 volumes:
   postgres-data:
   postgres-pam:
