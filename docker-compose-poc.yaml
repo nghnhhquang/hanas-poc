@@ -102,7 +102,7 @@ services:
   redis:
     image: redis
   jbpm:
-    image: jboss/jbpm-server-full:latest
+    image: thongdq3108/jbpm-server-full:latest
     environment:
       JBPM_DB_DRIVER: postgres
       JBPM_DB_HOST: 192.168.128.41
