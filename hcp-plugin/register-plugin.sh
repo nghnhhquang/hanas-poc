@@ -13,17 +13,19 @@ vault delete hanas.io/config/rhpam
 vault delete hanas.io/static-roles/workflow-admin
 vault delete hanas.io/config/workflow
 
-plugin_sha256="$(sha256sum /vault/plugin/hcpv-dbplugin-confluent | gawk '{ print $1 }')"
+plugin_sha256="$(sha256sum ./hcpv-dbplugin-confluent | gawk '{ print $1 }')"
 vault plugin register -sha256=$plugin_sha256 -version=v1.0.0 -args=--with-glibc,--with-cgo database hcpv-dbplugin-confluent
 
-plugin_sha256="$(sha256sum /vault/plugin/hcpv-dbplugin-datahub | gawk '{ print $1 }')"
+plugin_sha256="$(sha256sum ./hcpv-dbplugin-datahub | gawk '{ print $1 }')"
 vault plugin register -sha256=$plugin_sha256 -version=v1.0.0 -args=--with-glibc,--with-cgo database hcpv-dbplugin-datahub
 
-plugin_sha256="$(sha256sum /vault/plugin/hcpv-dbplugin-dataiku | gawk '{ print $1 }')"
+plugin_sha256="$(sha256sum ./hcpv-dbplugin-dataiku | gawk '{ print $1 }')"
 vault plugin register -sha256=$plugin_sha256 -version=v1.0.0 -args=--with-glibc,--with-cgo database hcpv-dbplugin-dataiku
 
-plugin_sha256="$(sha256sum /vault/plugin/hcpv-dbplugin-rhpam | gawk '{ print $1 }')"
+plugin_sha256="$(sha256sum ./hcpv-dbplugin-rhpam | gawk '{ print $1 }')"
 vault plugin register -sha256=$plugin_sha256 -version=v1.0.0 -args=--with-glibc,--with-cgo database hcpv-dbplugin-rhpam
 
-plugin_sha256="$(sha256sum /vault/plugin/hcpv-dbplugin-workflow | gawk '{ print $1 }')"
+plugin_sha256="$(sha256sum ./hcpv-dbplugin-workflow | gawk '{ print $1 }')"
 vault plugin register -sha256=$plugin_sha256 -version=v1.0.0 -args=--with-glibc,--with-cgo database hcpv-dbplugin-workflow
+
+./db-roles.sh
