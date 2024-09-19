@@ -128,7 +128,7 @@ services:
       POSTGRES_USER: jbpm
       POSTGRES_PASSWORD: jbpm
     healthcheck:
-      test: 'su -c "pg_isready -q" jbpm'
+      test: 'su -c "pg_isready -q" postgres'
       interval: 10s
       timeout: 2s
       retries: 30
