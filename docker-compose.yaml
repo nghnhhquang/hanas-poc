@@ -55,7 +55,7 @@ services:
     restart: always
     ports:
       - 443:443
-      - 8080:8080
+      - 8081:8080
       - 11000:11000
       - 9002:9002
       - 5001:5001
@@ -116,7 +116,7 @@ services:
       JBPM_DB_HOST: postgres-pam
     ports:
       - 8001:8001
-      - 5501:8080
+      - 8080:8080
 #docker run --rm --volumes-from pam-portal-postgres-1 -v $(pwd):/backup busybox tar cvf /backup/backup.tar /var/lib/postgresql/data
   postgres-pam:
     image: postgres:9.6
