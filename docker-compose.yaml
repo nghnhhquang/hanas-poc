@@ -113,12 +113,12 @@ services:
     restart: always
     environment:
       JBPM_DB_DRIVER: postgres
-      JBPM_DB_HOST: postgres-pam
+      JBPM_DB_HOST: postgres
     ports:
       - 8001:8001
       - 5501:8080
 #docker run --rm --volumes-from pam-portal-postgres-1 -v $(pwd):/backup busybox tar cvf /backup/backup.tar /var/lib/postgresql/data
-  postgres-pam:
+  postgres:
     image: postgres:9.6
     restart: always
     volumes:
