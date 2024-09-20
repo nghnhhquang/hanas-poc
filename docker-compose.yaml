@@ -109,7 +109,7 @@ services:
     image: redis
     restart: always
   jbpm:
-    image: thongdq3108/jbpm-server-full:latest
+    image: nghnhhquang/jbpm-server-poc:latest
     restart: always
     environment:
       JBPM_DB_DRIVER: postgres
