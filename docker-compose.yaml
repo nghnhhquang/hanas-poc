@@ -119,7 +119,7 @@ services:
       - 5501:8080
 #docker run --rm --volumes-from pam-portal-postgres-1 -v $(pwd):/backup busybox tar cvf /backup/backup.tar /var/lib/postgresql/data
   postgres-pam:
-    image: nghnhhquang/jbpm-postgres-poc
+    image: postgres:9.6
     restart: always
     volumes:
     - postgres-pam:/var/lib/postgresql/data
