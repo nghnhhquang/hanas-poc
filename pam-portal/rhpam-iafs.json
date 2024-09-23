@@ -48,8 +48,8 @@
   },
   "IAFSSocket": {
     "Protocol": "http",
-    "Host": "localhost",
-    "Port": "5003",
+    "Host": "rhpam-iafs-api",
+    "Port": "5011",
     "ApiPath": "/api/v1"
   },
   "Provider": "ORACLE"
