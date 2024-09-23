@@ -32,7 +32,7 @@ services:
     environment:
     - ASPNETCORE_ENVIRONMENT=
     volumes:
-    - ./rhpam-iafs-api.json:/src/rhpam-iafs-api/src/rhpam-iafs-api/appsettings.json
+    - ./rhpam-iafs-api.json:/src/rhpam-iafs-api/src/rhpam-iafs-api/appsettings.Development.json
     command:
     - dotnet
     - run
