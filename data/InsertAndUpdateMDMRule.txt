@@ -1,0 +1,41 @@
+//Insert ProcessMessageMappings for MDM RuleFieldConfig
+INSERT INTO "ProcessMessageMappings" ("Id","PamProcessDefinitionId","OutputMessage","Mapping","Metas","OptionData") values(
+SYS_GUID(),'MDM_POC_Workflows_1.5.0-SNAPSHOT:MDM_POC_Workflows.RulesManagementProcessv1','','{
+  "ruleFieldConfig": {
+    "com.myspace.mdm_poc_workflows.RuleFieldConfig": {
+      "id": "{#id#}",
+      "rule_type": "{#rule_type#}",
+      "rule_code": "{#rule_code#}",
+      "description": "{#description#}",
+      "to_date": {
+        "java.util.Date":{#java.util.Date:to_date#}
+      },
+      "from_date": {
+        "java.util.Date":{#java.util.Date:from_date#}
+      },
+      "product_type": "{#product_type#}",
+      "operating_system": "{#operating_system#}",
+      "column_apply": "{#column_apply#}",
+      "is_invalid_warning_null": "{#is_invalid_warning_null#}",
+      "match_run_order": "{#match_run_order#}",
+      "marge_group": "{#merge_group#}",
+      "merge_master_os": "{#merge_master_os#}",
+      "merge_priority_os": "{#merge_priority_os#}",
+      "merge_is_use_time_priority": "{#merge_is_use_time_priority#}",
+      "rule_field_config": "{#rule_field_config#}"
+    }
+  }
+}','' ,''
+);
+
+//Update Mapping for ProcessDefinitions MDM RuleFieldConfig
+Update "ProcessDefinitions" set "Mapping"=
+'{
+	Application: "ruleFieldConfig:id",
+	ProcessCF10: "ruleFieldConfig:rule_type",
+	ProcessCF11: "ruleFieldConfig:rule_code",
+	ProcessCF12: "ruleFieldConfig:description",
+	ProcessCF13: "ruleFieldConfig:rule_field_config",
+	ProcessCF14: "ruleFieldConfig:approve_flag"
+}'
+where "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.5.0-SNAPSHOT:MDM_POC_Workflows.RulesManagementProcessv1'
