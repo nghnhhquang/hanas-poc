@@ -117,12 +117,12 @@ services:
     ports:
       - 8001:8001
       - 5501:8080
-#docker run --rm --volumes-from pam-portal-postgres-1 -v $(pwd):/backup busybox tar cvf /backup/backup.tar /var/lib/postgresql/data
+  #docker run --rm --volumes-from pam-portal-postgres-1 -v $(pwd):/backup busybox tar cvf /backup/backup.tar /var/lib/postgresql/data
   postgres:
     image: postgres:9.6
     restart: always
     volumes:
-    - postgres-pam:/var/lib/postgresql/data
+      - postgres-pam:/var/lib/postgresql/data
     environment:
       TZ: Asia/Jakarta
       POSTGRES_DB: jbpm
