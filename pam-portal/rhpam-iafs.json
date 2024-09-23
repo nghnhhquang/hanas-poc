@@ -18,7 +18,19 @@
   },
   "AppSettings": {
     "SiteTitle": "Katalyst FAST Portal",
+    "Footer": "FAST - Copyright 2020",
+    "DefaultLanguage": "en-US",
+    "EnvironmentName": "v2",
     "RootUser": "portaladmin",
+    "DocumentPath": {
+      "MergeDocuments": ":Others/{#ProcessDefinitionId#}/{#ProcessInstanceId#}/{#typedocument#}/",
+      "TemplateDocuments": ":Others/{#ProcessDefinitionId#}/{#ProcessInstanceId#}/{#typedocument#}/",
+      "TemplateDocumentsUser": ":Others/{#ProcessDefinitionId#}/{#ProcessInstanceId#}/{#typedocument#}/",
+      "CategoryDocuments": ":Others/{#ProcessDefinitionId#}/{#ApplicationNo#}/{#typedocument#}/{#FolderName#}/"
+    },
+    "ListProperty": "{\"ListProperty\": [\"shb:IDNo##ad_IDNo@@af_IDNo\",\"shb:CustomerName##ad_Name@@af_Name\",\"shb:ProgramCode##ad_Program@@af_Program\",\"shb:CIFNo##ad_CIFNo\",\"shb:CompanyName##ad_CompanyName@@af_CompanyName\",\"shb:HostBranch##af_HostBranch@@udf_String10\",\"shb:OtherID##ad_OtherID@@af_OtherID\",\"shb:SaleBranch##af_SaleBranch@@udf_String09\"]}",
+    "FolderUnCategory": "Others",
+    "AutoImportExcelFolder": "/opt",
     "CanNotDeleteSystemMenuIds": "c255f730-3f12-4e71-8b5a-8707f3151f22,41200757-8995-4555-b199-607d922e7fd5,57028250-0bbd-402a-abfd-8a254277a756,de97ee1d-87d3-49fb-b840-9496d6aff060,5fa141e4-72d0-4bf0-809f-eb1114bbd5ca"
   },
   "CommonKeys": {
@@ -34,6 +46,11 @@
     "Host": "rhpam-iafs-api",
     "Port": "5011",
     "ApiPath": "/api/v1"
+  },
+  "IAFSEngine": {
+    "Protocol": "http",
+    "Host": "iafs-maths-engine",
+    "Port": "5002"
   },
   "IFASEngineApi": {
     "Protocol": "http",
@@ -52,5 +69,33 @@
     "Port": "5011",
     "ApiPath": "/api/v1"
   },
+  "IAFSUserNotificationWSURI": "ws://localhost:8282",
+  "IAFSUserNotification":{
+    "LocalUri": "ws://localhost:5001/ws",
+    "ServerPath": "/ws"
+  },
+  "IAFSECMAPIHost": "http://192.168.1.44",
+  "IAFSECMAPIPort": "8082",
+  "IAFSECMAPIUsernamePassword": "admin:admin",
+  "Cors": {
+    "Domains": "http://localhost:5001,http://127.0.0.1:5001"
+  },
+  "EPPlus": {
+    "ExcelPackage": {
+      "LicenseContext": "NonCommercial"
+    }
+  },
+  "IntervalSecond": -1,
+  "startProcessUser": "pamAdmin",
+  "ReadOnlyUser": "fast0000",
+  "SplitKey": "V$EmP@tK!",
+  "PamProvider": "Postgre",
+  "AllowSync": true,
+  "Direct": 2,
+  "ApplyRemoveProcessRule": true,
+  "SyncProcessStatusTimespan": 24.0,
+  "AllowsMultipleTabs": false,
+  "ExpireTimeCached": 3,
+  "TotalMemRefresh": 64,
   "Provider": "ORACLE"
 }
