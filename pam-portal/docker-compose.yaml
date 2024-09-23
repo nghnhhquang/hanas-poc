@@ -25,6 +25,8 @@ services:
     image: nghnhhquang/pam-portal
     #http://14.241.249.100:7979/katalyst1/shinhan_pam.git
     restart: always
+    ports:
+    - 5011:5011
     depends_on:
     - redis
     environment:
@@ -41,6 +43,8 @@ services:
   iafs-maths-engine:
     image: nghnhhquang/pam-portal
     restart: always
+    ports:
+    - 5002:5002
     depends_on:
     - redis
     environment:
