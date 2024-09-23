@@ -39,7 +39,10 @@
   },
   "ConnectionStrings": {
     "IaSystemDataConStringSQL": "Server=192.168.1.24;Database=iaSystemDb;User Id=sa;Password=Sa@12345",
-    "IaSystemDataConStringOracle": "Data Source=192.168.112.18:1521/MDMPOC;User Id=workflow;Password=MDM#123;"
+    "IaSystemDataConStringOracle": "Data Source=192.168.112.18:1521/MDMPOC;User Id=workflow;Password=MDM#123;",
+    "PamSystemDataConString": "Data Source=192.168.1.24:1521/PAMDB1;User Id=pamusr;Password=pampswd;",
+    "PamSystemDataConStringPostgre": "Server=192.168.1.17;Port=5432;Database=rhpamdb;User Id=rhpam;Password=rhpam1!",
+    "localizationSQLiteConString": "Data Source=./LanguageData/localizationDB.db;"
   },
   "IAFSApi": {
     "Protocol": "http",
