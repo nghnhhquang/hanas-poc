@@ -5,7 +5,7 @@ services:
     image: nghnhhquang/pam-portal
     restart: always
     environment:
-    - ASPNETCORE_ENVIRONMENT=
+    - ASPNETCORE_ENVIRONMENT=Development
     ports:
     - 5001:5001
     command: 
@@ -19,6 +19,7 @@ services:
     - redis
     volumes:
     - ./rhpam-iafs.json:/src/rhpam-iafs/appsettings.json
+    - ./rhpam-iafs.json:/src/rhpam-iafs/appsettings.Development.json
     - rhpam-log-data:/src/rhpam-iafs/LogFile
     - rhpam-migrations:/src/rhpam-iafs/Migrations
   rhpam-iafs-api:
@@ -30,7 +31,7 @@ services:
     depends_on:
     - redis
     environment:
-    - ASPNETCORE_ENVIRONMENT=
+    - ASPNETCORE_ENVIRONMENT=Development
     volumes:
     - ./rhpam-iafs-api.json:/src/rhpam-iafs-api/src/rhpam-iafs-api/appsettings.Development.json
     command:
@@ -48,9 +49,9 @@ services:
     depends_on:
     - redis
     environment:
-    - ASPNETCORE_ENVIRONMENT=
+    - ASPNETCORE_ENVIRONMENT=Development
     volumes:
-    - ./iafs-maths-engine.json:/src/iafs-maths-engine/appsettings.json
+    - ./iafs-maths-engine.json:/src/iafs-maths-engine/appsettings.Development.json
     command:
     - dotnet
     - run
