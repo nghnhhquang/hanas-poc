@@ -1,0 +1,45 @@
+INSERT INTO "ProcessMessageMappings" ("Id","PamProcessDefinitionId","OutputMessage","Mapping","Metas","OptionData") values(
+SYS_GUID(),'MDM_POC_Workflows_1.7.0-SNAPSHOT:MDM_POC_Workflows.ProductsManagementProcessv1','','"productInfo": {
+    "com.myspace.mdm_poc_workflows.MdmProduct": {
+   			"product_id": {#product_id#},
+            "domain_id": {#domain_id#},
+            "category_id": {#category_id#},
+            "product_name": "{#product_name#}",
+            "doi_tuong_ap_dung": "{#doi_tuong_ap_dung#}",
+            "kenh": "{#kenh#}",
+            "description": "{#description#}",
+            "from_date": {
+              "java.util.Date": {#from_date#}
+            },
+            "to_date": {
+              "java.util.Date": {#to_date#}
+            },
+            "status": {#status#},
+            "is_approved": {#is_approved#},
+            "attribute_json": "{#attribute_json#}",
+            "fees_json": "{#fees_json#}",
+            "promotion_json": "{#promotion_json#}",
+            "reject_reason": "{#reject_reason#}"
+    }
+  }','' ,''
+);
+
+UPDATE "ProcessDefinitions"
+SET "Mapping" = '{
+    Application: "productInfo:product_id",
+    ProcessCF12: "productInfo:description",
+    ProcessCF14: "productInfo:is_approved",
+    ProcessCF15: "productInfo:domain_id",
+    ProcessCF16: "productInfo:category_id",
+    ProcessCF17: "productInfo:product_name",
+    ProcessCF18: "productInfo:doi_tuong_ap_dung",
+    ProcessCF19: "productInfo:kenh",
+    ProcessCF20: "productInfo:to_date",
+    ProcessCF21: "productInfo:from_date",
+    ProcessCF22: "productInfo:status",
+    ProcessCF23: "productInfo:attribute_json",
+    ProcessCF24: "productInfo:fees_json",
+    ProcessCF25: "productInfo:promotion_json",
+    ProcessCF26: "productInfo:reject_reason"
+}'
+WHERE "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.7.0-SNAPSHOT:MDM_POC_Workflows.ProductsManagementProcessv1';

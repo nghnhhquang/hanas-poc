@@ -1,0 +1,127 @@
+set define off;
+
+//Insert ProcessMessageMappings for MDM RuleFieldConfig
+INSERT INTO "ProcessMessageMappings" ("Id","PamProcessDefinitionId","OutputMessage","Mapping","Metas","OptionData") values(
+SYS_GUID(),'MDM_POC_Workflows_1.6.0-SNAPSHOT:MDM_POC_Workflows.DeDuplicateDataProcessv1','','{
+  "dedupInfo": {
+    "com.myspace.mdm_poc_workflows.DeDuplicateInfo": {
+      "customer1": {
+        "com.myspace.mdm_poc_workflows.CustomerDedupInfo": {
+          "customer_code": "{#kdi01_1#}",
+          "customer_name": "",
+          "error_code": "{#rulecode_1#}",
+          "source": "{#source_1#}",
+          "error_desc": "{#description_1#}",
+          "cif_created": {
+			"java.util.Date":{#java.util.Date:cif_created_1#}
+		},
+          "branch_id": "{#branch_id_1#}",
+          "maker_id": "{#maker_id_1#}"
+        }
+      },
+      "customer2": {
+        "com.myspace.mdm_poc_workflows.CustomerDedupInfo": {
+          "customer_code": "{#kdi01_2#}",
+          "customer_name": "",
+          "error_code": "{#rulecode_2#}",
+          "source": "{#source_2#}",
+          "error_desc": "{#description_2#}",
+          "cif_created": {
+			"java.util.Date":{#java.util.Date:cif_created_2#}
+		},
+          "branch_id": "{#branch_id_2#}",
+          "maker_id": "{#maker_id_2#}"
+        }
+      },
+      "customer3": {
+        "com.myspace.mdm_poc_workflows.CustomerDedupInfo": {
+          "customer_code": "{#kdi01_3#}",
+          "customer_name": "",
+          "error_code": "{#rulecode_3#}",
+          "source": "{#source_3#}",
+          "error_desc": "{#description_3#}",
+          "cif_created": {
+			"java.util.Date":{#java.util.Date:cif_created_3#}
+		},
+          "branch_id": "{#branch_id_3#}",
+          "maker_id": "{#maker_id_3#}"
+        }
+      },
+      "customer4": {
+        "com.myspace.mdm_poc_workflows.CustomerDedupInfo": {
+          "customer_code": "{#kdi01_4#}",
+          "customer_name": "",
+          "error_code": "{#rulecode_4#}",
+          "source": "{#source_4#}",
+          "error_desc": "{#description_4#}",
+          "cif_created": {
+			"java.util.Date":{#java.util.Date:cif_created_4#}
+		},
+          "branch_id": "{#branch_id_4#}",
+          "maker_id": "{#maker_id_4#}"
+        }
+      },
+      "processApproval": {
+        "com.myspace.mdm_poc_workflows.ApproveInformation": {
+          "reject_reason": "",
+          "solution": "",
+          "is_approved": false
+        }
+      }
+,
+      "dss_code": "{#dss_code#}"
+,
+      "duplicate_columns": "{#duplicate_columns#}"
+,
+      "duplicate_group": "{#duplicate_group#}"
+
+
+    }
+  }
+}
+','' ,''
+);
+
+//Update Mapping for ProcessDefinitions MDM RuleFieldConfig
+Update "ProcessDefinitions" set "Mapping"=
+'{
+	Application: "dedupInfo:dss_code",
+  ProcessCF04: "dedupInfo:duplicate_group",
+  ProcessCF05: "dedupInfo:duplicate_columns",
+  ProcessCF06: "processApproval:reject_reason",
+  ProcessCF07: "processApproval:solution",
+  ProcessCF08: "processApproval:is_approved",
+  ProcessCF09: "customer1:customer_code",
+  ProcessCF10: "customer1:customer_name",
+  ProcessCF11: "customer1:error_code",
+  ProcessCF12: "customer1:source",
+  ProcessCF13: "customer1:error_desc",
+  ProcessCF14: "customer1:cif_created",
+  ProcessCF15: "customer1:branch_id",
+  ProcessCF16: "customer1:maker_id",
+  ProcessCF17: "customer2:customer_code",
+  ProcessCF18: "customer2:customer_name",
+  ProcessCF19: "customer2:error_code",
+  ProcessCF20: "customer2:source",
+  ProcessCF21: "customer2:error_desc",
+  ProcessCF22: "customer2:cif_created",
+  ProcessCF23: "customer2:branch_id",
+  ProcessCF24: "customer2:maker_id",
+  ProcessCF25: "customer3:customer_code",
+  ProcessCF26: "customer3:customer_name",
+  ProcessCF27: "customer3:error_code",
+  ProcessCF28: "customer3:source",
+  ProcessCF29: "customer3:error_desc",
+  ProcessCF30: "customer3:cif_created",
+  ProcessCF31: "customer3:branch_id",
+  ProcessCF32: "customer3:maker_id",
+  ProcessCF33: "customer4:customer_code",
+  ProcessCF34: "customer4:customer_name",
+  ProcessCF35: "customer4:error_code",
+  ProcessCF36: "customer4:source",
+  ProcessCF37: "customer4:error_desc",
+  ProcessCF38: "customer4:cif_created",
+  ProcessCF39: "customer4:branch_id",
+  ProcessCF40: "customer4:maker_id"
+}'
+where "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.6.0-SNAPSHOT:MDM_POC_Workflows.DeDuplicateDataProcessv1'
