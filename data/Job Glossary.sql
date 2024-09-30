@@ -36,15 +36,10 @@ SET "Mapping" = '{
   ProcessCF08: "jobDataGlossary:from_date",
   ProcessCF09: "jobDataGlossary:to_date",
   ProcessCF13: "jobDataGlossary:is_approved"
-}', "ViewConfig" = '[{
-	"data": "Branch"
-},{
-	"data": "TaskName"
-},{
-	"data": "ApplicationNo"
-},{
-	"data": "Product"
-},{
+}', "ViewConfig" = '[{"data": "Branch"},
+  {"data": "TaskName"},
+  {"data": "ApplicationNo"},
+  {"data": "Product"},{
 	"data": "CustomerName"
 },{
 	"data": "Amount"
