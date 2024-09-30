@@ -39,30 +39,17 @@ SET "Mapping" = '{
 }', "ViewConfig" = '[{"data": "Branch"},
   {"data": "TaskName"},
   {"data": "ApplicationNo"},
-  {"data": "Product"},{
-	"data": "CustomerName"
-},{
-	"data": "Amount"
-},{
-	"data": "Error_Dss_Code"
-},{
-	"data": "Error_Code"
-},{
-	"data": "Error_Column"
-},{
-	"data": "SaleInfo"
-},{
-	"data": "Source"
-},{
-	"data": "Cob_Date"
-},{
-	"data": "Owner"
-},{
-	"data": "tat"
-},{
-	"data": "Status"
-},{
-	"data": "TaskId#Fixed",
-	"fnCreatedCell": "ToDoList#RenderToDoListDetailLink@TaskAssign#RenderTaskAssignDetailLink@AllProcess#RenderAllProcessDetailLink"
-}]'
+  {"data": "Product"},
+  {"data": "CustomerName"},
+  {"data": "Amount"},
+  {"data": "Error_Dss_Code"},
+  {"data": "Error_Code"},
+  {"data": "Error_Column"},
+  {"data": "SaleInfo"},
+  {"data": "Source"},
+  {"data": "Cob_Date"},
+  {"data": "Owner"},
+  {"data": "tat"},
+  {"data": "Status"},
+  {"data": "TaskId#Fixed", "fnCreatedCell": "ToDoList#RenderToDoListDetailLink@TaskAssign#RenderTaskAssignDetailLink@AllProcess#RenderAllProcessDetailLink"}]'
 WHERE "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.7.0-SNAPSHOT:MDM_POC_Workflows.JobDataGlossaryProcessv1';
