@@ -1,0 +1,54 @@
+URL: Process/Tasks1?PamProcessId=MDM_POC_Workflows_1.7.0-SNAPSHOT:MDM_POC_Workflows.ProductsManagementProcessv1
+
+
+PamProcessDefinitionId: MDM_POC_Workflows_1.7.0-SNAPSHOT:MDM_POC_Workflows.ProductsManagementProcessv1
+
+Mapping:
+
+{
+    Application: "productInfo:product_id",
+    ProcessCF03: "productInfo:domain_name",
+    ProcessCF04: "productInfo:category_name",
+    ProcessCF05: "productInfo:to_date",
+    ProcessCF12: "productInfo:description",
+    ProcessCF14: "productInfo:is_approved",
+    ProcessCF15: "productInfo:domain_id",
+    ProcessCF16: "productInfo:category_id",
+    ProcessCF11: "productInfo:product_name",
+    ProcessCF18: "productInfo:doi_tuong_ap_dung",
+    ProcessCF09: "productInfo:from_date",
+    ProcessCF20: "productInfo:kenh",
+    ProcessCF22: "productInfo:status",
+    ProcessCF23: "productInfo:attribute_json",
+    ProcessCF24: "productInfo:fees_json",
+    ProcessCF25: "productInfo:promotion_json",
+    ProcessCF26: "productInfo:reject_reason"
+}
+
+ViewConfig:
+[{
+	"data": "Branch"
+},{
+	"data": "TaskName"
+},{
+	"data": "ApplicationNo"
+},{
+	"data": "Error_Dss_Code"
+},{
+	"data": "Error_Column"
+},{
+	"data": "Error_Value"
+},{
+	"data": "Cob_Date"
+},{
+	"data": "CompTaxCode"
+},{
+	"data": "Owner"
+},{
+	"data": "tat"
+},{
+	"data": "Status"
+},{
+	"data": "TaskId#Fixed",
+	"fnCreatedCell": "ToDoList#RenderToDoListDetailLink@TaskAssign#RenderTaskAssignDetailLink@AllProcess#RenderAllProcessDetailLink"
+}]
