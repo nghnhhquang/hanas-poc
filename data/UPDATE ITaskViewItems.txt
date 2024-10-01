@@ -1,0 +1,14 @@
+UPDATE "ITaskViewItems"
+SET "hidden" = 0, "field_readonly" = 1, "ordernum" = 0
+WHERE "ITaskViewId" IN (
+    SELECT "Id" FROM "ITaskViews"
+    WHERE "ProcessDefinitionID" IN (
+        SELECT "Id" FROM "ProcessDefinitions"
+        WHERE "PamProcessDefinitionId" IN (
+            'MDM_POC_Workflows_1.7.0-SNAPSHOT:MDM_POC_Workflows.ProductsManagementProcessv1'
+        )
+    ) 
+    AND "TaskName" = 'BranchChecker'
+)
+AND "name" NOT LIKE '%reject_reason%'
+AND "name" NOT LIKE '%is_approved%';
