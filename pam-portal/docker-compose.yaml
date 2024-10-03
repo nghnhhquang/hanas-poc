@@ -46,7 +46,7 @@ services:
       - ./iafs-maths-engine.json:/app/appsettings.json
     command:
       - dotnet
-      - iafs-maths-engine.dll
+      - iafs-maths-engines.dll
 volumes:
   rhpam-log-data:
   rhpam-migrations:
