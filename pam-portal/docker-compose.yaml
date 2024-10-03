@@ -29,6 +29,7 @@ services:
     - ASPNETCORE_URLS=http://+:5011
     volumes:
     - ./rhpam-iafs-api.json:/app/appsettings.json
+    - ./rhpam-iafs-api.json:/app/appsettings.Development.json
     command:
     - dotnet
     - rhpam-iafs-api.dll
