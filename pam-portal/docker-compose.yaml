@@ -2,63 +2,50 @@ services:
   redis:
     image: redis
   rhpam-iafs:
-    image: nghnhhquang/pam-portal
+    image: nghnhhquang/pam-portal-bin
     restart: always
     environment:
-    - ASPNETCORE_ENVIRONMENT=Development
+    - ASPNETCORE_URLS=http://+:5001
     ports:
     - 5001:5001
     command: 
     - dotnet
-    - run
-    - --project
-    - ./rhpam-iafs/iafs.csproj
-    - --urls
-    - http://0.0.0.0:5001
+    - iafs.dll
     depends_on:
     - redis
     volumes:
-    - ./rhpam-iafs.json:/src/rhpam-iafs/appsettings.json
-    - ./rhpam-iafs.json:/src/rhpam-iafs/appsettings.Development.json
-    - rhpam-log-data:/src/rhpam-iafs/LogFile
-    - rhpam-migrations:/src/rhpam-iafs/Migrations
+    - ./rhpam-iafs.json:/app/appsettings.json
+    - ./rhpam-iafs.json:/app/appsettings.Development.json
+    - rhpam-log-data:/app/LogFile
+    - rhpam-migrations:/app/Migrations
   rhpam-iafs-api:
-    image: nghnhhquang/pam-portal
-    #http://14.241.249.100:7979/katalyst1/shinhan_pam.git
+    image: nghnhhquang/pam-portal-bin
     restart: always
     ports:
     - 5011:5011
     depends_on:
     - redis
     environment:
-    - ASPNETCORE_ENVIRONMENT=Development
+    - ASPNETCORE_URLS=http://+:5011
     volumes:
-    - ./rhpam-iafs-api.json:/src/rhpam-iafs-api/src/rhpam-iafs-api/appsettings.Development.json
+    - ./rhpam-iafs-api.json:/app/appsettings.json
     command:
     - dotnet
-    - run
-    - --project
-    - ./rhpam-iafs-api/src/rhpam-iafs-api/rhpam-iafs-api.csproj
-    - --urls
-    - http://0.0.0.0:5011
+    - rhpam-iafs-api.dll
   iafs-maths-engine:
-    image: nghnhhquang/pam-portal
+    image: nghnhhquang/pam-portal-bin
     restart: always
     ports:
     - 5002:5002
     depends_on:
     - redis
     environment:
-    - ASPNETCORE_ENVIRONMENT=Development
+    - ASPNETCORE_URLS=http://+:5002
     volumes:
-    - ./iafs-maths-engine.json:/src/iafs-maths-engine/appsettings.Development.json
+    - ./iafs-maths-engine.json:/app/appsettings.json
     command:
     - dotnet
-    - run
-    - --project
-    - ./iafs-maths-engine/iafs-maths-engines.csproj
-    - --urls
-    - http://0.0.0.0:5002
+    - iafs-maths-engines.dll
 volumes:
   rhpam-log-data:
   rhpam-migrations:

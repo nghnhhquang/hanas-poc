@@ -1,0 +1,64 @@
+services:
+  redis:
+    image: redis
+  rhpam-iafs:
+    image: nghnhhquang/pam-portal
+    restart: always
+    environment:
+    - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+    - 5001:5001
+    command: 
+    - dotnet
+    - run
+    - --project
+    - ./rhpam-iafs/iafs.csproj
+    - --urls
+    - http://0.0.0.0:5001
+    depends_on:
+    - redis
+    volumes:
+    - ./rhpam-iafs.json:/src/rhpam-iafs/appsettings.json
+    - ./rhpam-iafs.json:/src/rhpam-iafs/appsettings.Development.json
+    - rhpam-log-data:/src/rhpam-iafs/LogFile
+    - rhpam-migrations:/src/rhpam-iafs/Migrations
+  rhpam-iafs-api:
+    image: nghnhhquang/pam-portal
+    #http://14.241.249.100:7979/katalyst1/shinhan_pam.git
+    restart: always
+    ports:
+    - 5011:5011
+    depends_on:
+    - redis
+    environment:
+    - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+    - ./rhpam-iafs-api.json:/src/rhpam-iafs-api/src/rhpam-iafs-api/appsettings.Development.json
+    command:
+    - dotnet
+    - run
+    - --project
+    - ./rhpam-iafs-api/src/rhpam-iafs-api/rhpam-iafs-api.csproj
+    - --urls
+    - http://0.0.0.0:5011
+  iafs-maths-engine:
+    image: nghnhhquang/pam-portal
+    restart: always
+    ports:
+    - 5002:5002
+    depends_on:
+    - redis
+    environment:
+    - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+    - ./iafs-maths-engine.json:/src/iafs-maths-engine/appsettings.Development.json
+    command:
+    - dotnet
+    - run
+    - --project
+    - ./iafs-maths-engine/iafs-maths-engines.csproj
+    - --urls
+    - http://0.0.0.0:5002
+volumes:
+  rhpam-log-data:
+  rhpam-migrations:
