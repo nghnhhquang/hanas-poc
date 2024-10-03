@@ -2,15 +2,10 @@ services:
   redis:
     image: redis
   rhpam-iafs:
-    image: nghnhhquang/pam-portal-bin
+    image: nghnhhquang/pam-portal-iafs
     restart: always
-    environment:
-    - ASPNETCORE_URLS=http://+:5001
     ports:
     - 5001:5001
-    command: 
-    - dotnet
-    - iafs.dll
     depends_on:
     - redis
     volumes:
@@ -19,34 +14,24 @@ services:
     - rhpam-log-data:/app/LogFile
     - rhpam-migrations:/app/Migrations
   rhpam-iafs-api:
-    image: nghnhhquang/pam-portal-bin
+    image: nghnhhquang/pam-portal-iafs-api
     restart: always
     ports:
     - 5011:5011
     depends_on:
     - redis
-    environment:
-    - ASPNETCORE_URLS=http://+:5011
     volumes:
     - ./rhpam-iafs-api.json:/app/appsettings.json
     - ./rhpam-iafs-api.json:/app/appsettings.Development.json
-    command:
-    - dotnet
-    - rhpam-iafs-api.dll
   iafs-maths-engine:
-    image: nghnhhquang/pam-portal-bin
+    image: nghnhhquang/pam-portal-iafs-engine
     restart: always
     ports:
     - 5002:5002
     depends_on:
     - redis
-    environment:
-    - ASPNETCORE_URLS=http://+:5002
     volumes:
     - ./iafs-maths-engine.json:/app/appsettings.json
-    command:
-    - dotnet
-    - iafs-maths-engines.dll
 volumes:
   rhpam-log-data:
   rhpam-migrations:
