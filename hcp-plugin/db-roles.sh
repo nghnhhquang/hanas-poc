@@ -2,6 +2,7 @@ vault write hanas.io/config/confluent plugin_name="hcpv-dbplugin-confluent" allo
 vault write hanas.io/config/datahub plugin_name="hcpv-dbplugin-datahub" allowed_roles="*" url="http://192.168.128.41:29002" username="datahub" password="datahub" insecure_tls=true
 vault write hanas.io/config/dataiku plugin_name="hcpv-dbplugin-dataiku" allowed_roles="*" url="http://192.168.121.41:11000" username="admin" password="admin" insecure_tls=true
 vault write hanas.io/config/rhpam plugin_name="hcpv-dbplugin-rhpam" allowed_roles="*" url="http://192.168.128.41:5501" username="portaladmin" password="12345" pwd="12345" insecure_tls=true
+vault write hanas.io/config/jbpm plugin_name="hcpv-dbplugin-rhpam" allowed_roles="*" url="http://192.168.128.41:5501" username="portaladmin" password="12345" pwd="12345" insecure_tls=true
 vault write hanas.io/config/workflow plugin_name="hcpv-dbplugin-workflow" allowed_roles="*" url="http://192.168.121.42:5001" pamurl="http://192.168.128.41:5501" username="portaladmin" password="12345" insecure_tls=true
 
 vault write hanas.io/static-roles/datahub-admin db_name="datahub" username="portaladmin" rotation_period="1d" rotation_statements="{\"allow_create_user\":true,\"roles\":[\"Admin\"]}"
