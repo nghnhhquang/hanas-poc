@@ -1,0 +1,57 @@
+--Update Product
+
+DECLARE
+    TYPE t_ordernumList IS TABLE OF NUMBER;
+    TYPE t_nameList IS TABLE OF VARCHAR2(50);
+    
+    ordernumList t_ordernumList := t_ordernumList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14);
+    nameList t_nameList := t_nameList('%product_name%', '%product_id%', '%domain_id%', '%category_id%', '%description%', 
+                                      '%from_date%', '%is_approved%', '%status%', '%doi_tuong_ap_dung%', '%kenh%', 
+                                      '%attribute_json%', '%promotion_json%', '%fees_json%', '%to_date%', '%reject_reason%');
+    
+BEGIN
+    FOR i IN 1 .. ordernumList.COUNT LOOP
+        UPDATE "ITaskViewItems"
+        SET "ordernum" = ordernumList(i)
+        WHERE "ITaskViewId" IN (
+            SELECT "Id" FROM "ITaskViews"
+            WHERE "ProcessDefinitionID" IN (
+                SELECT "Id" FROM "ProcessDefinitions"
+                WHERE "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.7.0-SNAPSHOT:MDM_POC_Workflows.ProductsManagementProcessv1'
+            )
+            AND "TaskName" = 'BranchChecker'
+        )
+        AND "name" LIKE nameList(i); 
+    END LOOP;
+END;
+
+--Update JobGlossary
+DECLARE
+    TYPE t_ordernumList IS TABLE OF NUMBER;
+    TYPE t_nameList IS TABLE OF VARCHAR2(50);
+    
+    ordernumList t_ordernumList := t_ordernumList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+    nameList t_nameList := t_nameList('%job_id%', '%standard_code%', '%standard_name%', '%from_date%', 
+                                      '%is_approved%', '%standard_description%', '%t24%', '%card%', '%crm%', 
+                                      '%to_date%', '%reject_reason%');
+    
+BEGIN
+    FOR i IN 1 .. ordernumList.COUNT LOOP
+        UPDATE "ITaskViewItems"
+        SET "ordernum" = ordernumList(i)
+        WHERE "ITaskViewId" IN (
+            SELECT "Id" FROM "ITaskViews"
+            WHERE "ProcessDefinitionID" IN (
+                SELECT "Id" FROM "ProcessDefinitions"
+                WHERE "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.8.0-SNAPSHOT:MDM_POC_Workflows.JobDataGlossaryProcessv1'
+            )
+            AND "TaskName" = 'BranchChecker'
+        )
+        AND "name" LIKE nameList(i); 
+    END LOOP;
+END;
+
+
+
+
+
