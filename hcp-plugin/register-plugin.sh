@@ -10,6 +10,9 @@ vault delete hanas.io/config/dataiku
 vault delete hanas.io/static-roles/rhpam-admin
 vault delete hanas.io/config/rhpam
 
+vault delete hanas.io/static-roles/jbpm-admin
+vault delete hanas.io/config/jbpm
+
 vault delete hanas.io/static-roles/workflow-admin
 vault delete hanas.io/config/workflow
 
