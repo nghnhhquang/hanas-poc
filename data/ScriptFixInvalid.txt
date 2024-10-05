@@ -1,0 +1,57 @@
+set define off;
+
+//Insert ProcessMessageMappings for MDM RuleFieldConfig
+INSERT INTO "ProcessMessageMappings" ("Id","PamProcessDefinitionId","OutputMessage","Mapping","Metas","OptionData") values(
+SYS_GUID(),'MDM_POC_Workflows_1.3.0-SNAPSHOT:MDM_POC_Workflows.FixInvalidDataProcessv1','','{
+  "dssInvalidData": {
+    "com.myspace.mdm_poc_workflows.DssInvalidData": {
+      "invalid_count": "{#INVALID_CNT#}",
+      "error_dss_code": "{#ERROR_DSS_CODE#}",
+      "user_id": "{#USER_ID#}",
+      "branch_id": "{#BRANCH_ID#}",
+      "error_code": "{#ERROR_CODE#}",
+      "input_value": "",
+      "approve_flag": "",
+      "kdi01": "{#KDI01#}",
+      "error_value": "{#ERROR_VALUE#}",
+      "kdi02": "{#KDI02#}",
+      "cob_date": {
+        "java.util.Date":{#java.util.Date:COB_DATE#}
+      },
+      "error_column": "{#ERROR_COLUMN#}",
+      "source": "{#SOURCE#}"
+,
+      "reject_reason": ""
+    }
+  }
+}
+','' ,''
+);
+
+//Update Mapping for ProcessDefinitions MDM RuleFieldConfig
+Update "ProcessDefinitions" set "Mapping"=
+'{
+	Application: "dssInvalidData:kdi01",
+	CustomerName: "dssInvalidData:kdi02",
+	ProcessCF01: "dssInvalidData:error_dss_code",
+	ProcessCF02: "dssInvalidData:error_code",
+	ProcessCF03: "dssInvalidData:error_column",
+	ProcessCF04: "dssInvalidData:error_value",
+	ProcessCF05: "dssInvalidData:invalid_count",
+	ProcessCF06: "dssInvalidData:user_id",
+	ProcessCF07: "dssInvalidData:branch_id",
+	ProcessCF08: "dssInvalidData:source",
+	ProcessCF09: "dssInvalidData:cob_date"
+}'
+where "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.3.0-SNAPSHOT:MDM_POC_Workflows.FixInvalidDataProcessv1';
+
+
+
+Insert into "IProcessScripts" values(
+SYS_GUID(),
+'FixInvalidData',
+'FixInvalidData.js',
+(select "Id" from "ProcessDefinitions" where "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.3.0-SNAPSHOT:MDM_POC_Workflows.FixInvalidDataProcessv1'),
+'1',
+'1'
+)

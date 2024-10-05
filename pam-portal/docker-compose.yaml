@@ -10,6 +10,7 @@ services:
       - redis
     environment:
       - ASPNETCORE_URLS=http://+:5001
+      - TZ=Asia/Jakarta
     volumes:
       - ./rhpam-iafs.json:/app/appsettings.json
       - ./rhpam-iafs.json:/app/appsettings.Development.json
@@ -25,6 +26,7 @@ services:
       - 5011:5011
     environment:
       - ASPNETCORE_URLS=http://+:5011
+      - TZ=Asia/Jakarta
     depends_on:
       - redis
     volumes:
@@ -40,6 +42,7 @@ services:
       - 5002:5002
     environment:
       - ASPNETCORE_URLS=http://+:5002
+      - TZ=Asia/Jakarta
     depends_on:
       - redis
     volumes:
