@@ -1,0 +1,61 @@
+Update "ITaskViewItems" set "ordernum" = 0,"field_readonly" = 1 where "name" = 'kdi02' and "ITaskViewId" = ((select "Id" from "ITaskViews" where "ProcessDefinitionID" = 
+(select "Id" from "ProcessDefinitions" where "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.3.0-SNAPSHOT:MDM_POC_Workflows.FixInvalidDataProcessv1');
+Update "ITaskViewItems" set "ordernum" = 1,"field_readonly" = 1 , "hidden" = 1 where "name" = 'user_id' and "ITaskViewId" = ((select "Id" from "ITaskViews" where "ProcessDefinitionID" = 
+(select "Id" from "ProcessDefinitions" where "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.3.0-SNAPSHOT:MDM_POC_Workflows.FixInvalidDataProcessv1');
+Update "ITaskViewItems" set "ordernum" = 2,"field_readonly" = 1 where "name" = 'cob_date' and "ITaskViewId" = ((select "Id" from "ITaskViews" where "ProcessDefinitionID" = 
+(select "Id" from "ProcessDefinitions" where "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.3.0-SNAPSHOT:MDM_POC_Workflows.FixInvalidDataProcessv1'); 
+Update "ITaskViewItems" set "ordernum" = 3,"field_readonly" = 1 where "name" = 'source' and "ITaskViewId" = ((select "Id" from "ITaskViews" where "ProcessDefinitionID" = 
+(select "Id" from "ProcessDefinitions" where "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.3.0-SNAPSHOT:MDM_POC_Workflows.FixInvalidDataProcessv1');
+Update "ITaskViewItems" set "ordernum" = 4,"field_readonly" = 1 where "name" = 'error_column' and "ITaskViewId" = ((select "Id" from "ITaskViews" where "ProcessDefinitionID" = 
+(select "Id" from "ProcessDefinitions" where "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.3.0-SNAPSHOT:MDM_POC_Workflows.FixInvalidDataProcessv1');
+Update "ITaskViewItems" set "ordernum" = 5,"field_readonly" = 1 where "name" = 'error_value' and "ITaskViewId" = ((select "Id" from "ITaskViews" where "ProcessDefinitionID" = 
+(select "Id" from "ProcessDefinitions" where "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.3.0-SNAPSHOT:MDM_POC_Workflows.FixInvalidDataProcessv1');
+Update "ITaskViewItems" set "ordernum" = 6,"field_readonly" = 1 where "name" = 'approve_flag' and "ITaskViewId" = ((select "Id" from "ITaskViews" where "ProcessDefinitionID" = 
+(select "Id" from "ProcessDefinitions" where "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.3.0-SNAPSHOT:MDM_POC_Workflows.FixInvalidDataProcessv1');
+Update "ITaskViewItems" set "ordernum" = 7,"field_readonly" = 1 where "name" = 'kdi01' and "ITaskViewId" = ((select "Id" from "ITaskViews" where "ProcessDefinitionID" = 
+(select "Id" from "ProcessDefinitions" where "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.3.0-SNAPSHOT:MDM_POC_Workflows.FixInvalidDataProcessv1');
+Update "ITaskViewItems" set "ordernum" = 8,"field_readonly" = 1 where "name" = 'branch_id' and "ITaskViewId" = ((select "Id" from "ITaskViews" where "ProcessDefinitionID" = 
+(select "Id" from "ProcessDefinitions" where "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.3.0-SNAPSHOT:MDM_POC_Workflows.FixInvalidDataProcessv1');
+Update "ITaskViewItems" set "ordernum" = 9,"field_readonly" = 1 where "name" = 'error_dss_code' and "ITaskViewId" = ((select "Id" from "ITaskViews" where "ProcessDefinitionID" = 
+(select "Id" from "ProcessDefinitions" where "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.3.0-SNAPSHOT:MDM_POC_Workflows.FixInvalidDataProcessv1');
+Update "ITaskViewItems" set "ordernum" = 10,"field_readonly" = 1, "hidden" = 1 where "name" = 'invalid_count' and "ITaskViewId" = ((select "Id" from "ITaskViews" where "ProcessDefinitionID" = 
+(select "Id" from "ProcessDefinitions" where "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.3.0-SNAPSHOT:MDM_POC_Workflows.FixInvalidDataProcessv1');
+Update "ITaskViewItems" set "ordernum" = 11,"field_readonly" = 1 where "name" = 'error_code' and "ITaskViewId" = ((select "Id" from "ITaskViews" where "ProcessDefinitionID" = 
+(select "Id" from "ProcessDefinitions" where "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.3.0-SNAPSHOT:MDM_POC_Workflows.FixInvalidDataProcessv1');
+Update "ITaskViewItems" set "ordernum" = 12,"field_readonly" = 1 where "name" = 'input_value' and "ITaskViewId" = ((select "Id" from "ITaskViews" where "ProcessDefinitionID" = 
+(select "Id" from "ProcessDefinitions" where "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.3.0-SNAPSHOT:MDM_POC_Workflows.FixInvalidDataProcessv1');
+Update "ITaskViewItems" set "ordernum" = 13,"field_readonly" = 1 where "name" = 'reject_reason' and "ITaskViewId" = ((select "Id" from "ITaskViews" where "ProcessDefinitionID" = 
+(select "Id" from "ProcessDefinitions" where "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.3.0-SNAPSHOT:MDM_POC_Workflows.FixInvalidDataProcessv1');
+
+Update "ITaskViewItems" set "field_readonly" = 0 where "name" = 'input_value' and "ITaskViewId" = ((select "Id" from "ITaskViews" where "ProcessDefinitionID" = 
+(select "Id" from "ProcessDefinitions" where "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.3.0-SNAPSHOT:MDM_POC_Workflows.FixInvalidDataProcessv1') and "TaskName" = 'Maker'));
+
+Update "ITaskViewItems" set "field_readonly" = 0 where "name" = 'approve_flag' and "ITaskViewId" = ((select "Id" from "ITaskViews" where "ProcessDefinitionID" = 
+(select "Id" from "ProcessDefinitions" where "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.3.0-SNAPSHOT:MDM_POC_Workflows.FixInvalidDataProcessv1') and "TaskName" = 'Checker'));
+
+Update "ITaskViewItems" set "field_readonly" = 0 where "name" = 'reject_reason' and "ITaskViewId" = ((select "Id" from "ITaskViews" where "ProcessDefinitionID" = 
+(select "Id" from "ProcessDefinitions" where "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.3.0-SNAPSHOT:MDM_POC_Workflows.FixInvalidDataProcessv1') and "TaskName" = 'Checker'));
+
+Update "ITaskViewItems" set "type" = 'textbox',"code" = 'TextBox',"maxlength" = '2000',"field_readonly" = 1 where "name" = 'error_code' and "ITaskViewId" = ((select "Id" from "ITaskViews" where "ProcessDefinitionID" = 
+(select "Id" from "ProcessDefinitions" where "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.3.0-SNAPSHOT:MDM_POC_Workflows.FixInvalidDataProcessv1');
+
+
+Insert into "AllCode" values(Sys_guid(),'','Error_Column_Code','Error_Column_Code','','','','','Active','KDI01 - M? khách hàng cá nhân','','','KDI01 - M? khách hàng cá nhân','','','','KDI01','','1','KDI01');
+Insert into "AllCode" values(Sys_guid(),'','Error_Column_Code','Error_Column_Code','','','','','Active','KDI02 - H? và tên khách hàng cá nhân','','','KDI02 - H? và tên khách hàng cá nhân','','','','KDI02','','2','KDI02');
+Insert into "AllCode" values(Sys_guid(),'','Error_Column_Code','Error_Column_Code','','','','','Active','KDI03 - Danh xưng khách hàng cá nhân','','','KDI03 - Danh xưng khách hàng cá nhân','','','','KDI03','','3','KDI03');
+Insert into "AllCode" values(Sys_guid(),'','Error_Column_Code','Error_Column_Code','','','','','Active','KDI05 - Gi?i tính','','','KDI05 - Gi?i tính','','','','KDI05','','4','KDI05');
+Insert into "AllCode" values(Sys_guid(),'','Error_Column_Code','Error_Column_Code','','','','','Active','KDI07 - Ngày sinh','','','KDI07 - Ngày sinh','','','','KDI07','','5','KDI07');
+Insert into "AllCode" values(Sys_guid(),'','Error_Column_Code','Error_Column_Code','','','','','Active','KDI17 - S? đi?n tho?i di đ?ng','','','KDI17 - S? đi?n tho?i di đ?ng','','','','KDI17','','6','KDI17');
+Insert into "AllCode" values(Sys_guid(),'','Error_Column_Code','Error_Column_Code','','','','','Active','KDI19 - Đ?a ch? email cá nhân','','','KDI19 - Đ?a ch? email cá nhân','','','','KDI19','','7','KDI19');
+Insert into "AllCode" values(Sys_guid(),'','Error_Column_Code','Error_Column_Code','','','','','Active','KDI23_01 - Passport','','','KDI23_01 - Passport','','','','KDI23_01','','8','KDI23_01');
+Insert into "AllCode" values(Sys_guid(),'','Error_Column_Code','Error_Column_Code','','','','','Active','KDI22_01 - Căn cư?c công dân','','','KDI22_01 - Căn cư?c công dân','','','','KDI22_01','','9','KDI22_01');
+Insert into "AllCode" values(Sys_guid(),'','Error_Column_Code','Error_Column_Code','','','','','Active','KDI22_02 - Ngày c?p Căn cư?c công dân','','','KDI22_02 - Ngày c?p Căn cư?c công dân','','','','KDI22_02','','10','KDI22_02');
+Insert into "AllCode" values(Sys_guid(),'','Error_Column_Code','Error_Column_Code','','','','','Active','KDI22_03 - Nơi c?p Căn cư?c công dân','','','KDI22_03 - Nơi c?p Căn cư?c công dân','','','','KDI22_03','','11','KDI22_03');
+
+Insert into "StandardFields" values(Sys_guid(),'0','Error_Column_Code','string','text','','2','{"url": "/api/v1/Category/code/Error_Column_Code","mappings": ["DRP_ATH_AITHERCode", "DRP_DTL_BriefVN", "Id", ""]}');
+
+
+update "ProcessVariables" set 
+"StandardFieldId" = (select "Id" from "StandardFields" where "FieldName" like '%Error_Column_Code%')
+where "Name" = 'error_column' and "PamProcessDefinition" = 'MDM_POC_Workflows_1.3.0-SNAPSHOT:MDM_POC_Workflows.FixInvalidDataProcessv1';
+select * from "StandardFields";
