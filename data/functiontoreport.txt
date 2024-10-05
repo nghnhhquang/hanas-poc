@@ -1,0 +1,40 @@
+create or replace FUNCTION             "FU_BRANCHCHILD"
+(
+  pBranch_id IN NUMBER 
+) RETURN VARCHAR2 AS 
+
+
+pNumber Number(10) := 0 ;
+plev Number(10) := 0 ;
+plevmax Number(10) := 0 ;
+pId Number(10) := -1 ;
+
+pStringId varchar(4000) :='';
+pChildId varchar(4000) :='';
+pStrParentId varchar(4000) :='';
+pStringIdFull varchar(4000) :='';
+
+BEGIN
+
+	pId:=pBranch_id ;
+	select max("Level") into plevmax from "Organizations";
+	select "Level" into plev from "Organizations" where "Id"=pId;
+	pNumber:=plev;
+	pstrParentId:='#'|| to_char(pId)||'#' ;
+
+	--print @lev;
+	WHILE pNumber <  plevmax
+	LOOP
+
+		SELECT nvl(listagg(t1."Id", '#')  within group (order by t1."ParentId"),'#') INTO pChildId
+	  	from "Organizations" t1
+		   where instr(pStrParentId,'#'||to_char(t1."ParentId")||'#')>0 ;
+		pStrParentId := '#'||nvl(pChildId,'')||'#' ;
+	 	pStringIdFull  := pStringIdFull || pStrParentId;
+	 	pNumber := pNumber + 1 ;
+
+	END LOOP;
+	pStringIdFull:=pStringIdFull ||'#'||to_char(pId)||'#';
+
+RETURN pStringIdFull;
+END;
