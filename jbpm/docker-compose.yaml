@@ -6,6 +6,8 @@ services:
       JBPM_DB_DRIVER: postgres
       JBPM_DB_HOST: postgres
       TZ: Asia/Jakarta
+    depends_on:
+      - postgres
     ports:
       - 8001:8001
       - 8080:8080
