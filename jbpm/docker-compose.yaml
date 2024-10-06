@@ -1,0 +1,13 @@
+services:
+  jbpm:
+    image: nghnhhquang/jbpm-server-poc:latest
+    restart: always
+    environment:
+      JBPM_DB_DRIVER: postgres
+      JBPM_DB_HOST: postgres
+      TZ: Asia/Jakarta
+    ports:
+      - 8001:8001
+      - 8080:8080
+    extra_hosts:
+      - "postgres:192.168.121.41"

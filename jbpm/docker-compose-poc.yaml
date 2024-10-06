@@ -1,0 +1,38 @@
+services:
+  jbpm:
+    image: nghnhhquang/jbpm-server-poc:latest
+    restart: always
+    environment:
+      JBPM_DB_DRIVER: postgres
+      JBPM_DB_HOST: postgres
+      TZ: Asia/Jakarta
+    ports:
+      - 8001:8001
+      - 5501:8080
+  #  volumes:
+  #    - m2-repository:/opt/jboss/.m2/repository
+  #    - git-repo:/opt/jboss/wildfly/bin/.niogit
+  #    - git-repo-caseapp:/opt/jboss/wildfly/bin/.niogit-caseapp
+  postgres:
+    image: postgres:17
+    restart: always
+    volumes:
+      - postgres-pam:/var/lib/postgresql/data
+    environment:
+      TZ: Asia/Jakarta
+      POSTGRES_DB: jbpm
+      POSTGRES_USER: jbpm
+      POSTGRES_PASSWORD: jbpm
+    command:
+      - postgres
+      - -c
+      - max_connections=1000
+      - -c
+      - shared_buffers=3GB
+    healthcheck:
+      test: 'su -c "pg_isready -q" postgres'
+      interval: 10s
+      timeout: 2s
+      retries: 30
+volumes:
+  postgres-pam:
