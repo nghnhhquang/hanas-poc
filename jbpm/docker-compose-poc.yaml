@@ -28,7 +28,7 @@ services:
       - -c
       - max_connections=1000
       - -c
-      - shared_buffers=3GB
+      - shared_buffers=4GB
     healthcheck:
       test: 'su -c "pg_isready -q" postgres'
       interval: 10s
