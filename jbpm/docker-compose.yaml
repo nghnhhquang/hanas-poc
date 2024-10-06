@@ -30,7 +30,7 @@ services:
       - -c
       - shared_buffers=4GB
     healthcheck:
-      test: 'su -c "pg_isready -q" postgres'
+      test: 'su -c "pg_isready -q" jbpm'
       interval: 10s
       timeout: 2s
       retries: 30
