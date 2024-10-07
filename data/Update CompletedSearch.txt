@@ -1,0 +1,74 @@
+set define off;
+update "ReportConfigurations" set "Query" = 
+'select
+
+a."BranchName" "BRANCHID",
+a."ProcessId" "PROCESSID",
+a."ApplicationNo" "APPLICATIONNO",
+--a."CustomerName" "CUSTOMERNAME",
+--a."CustomerID" "ID NUMBER",
+--a."Value" "AMOUNT",
+--a."SaleGroup" "SALEGROUP",
+--a."CompTaxCode" "COMPANY TAX CODE",
+--a."ProcessCF08" "GHPAPPID",
+--  datediff(d,a.StartDate, a.ModifyDate ) TAT,
+''Completed'' "STATUS",
+--a."DECLINE_Date" "DECLINE DATE",
+--a."DECLINE_Notes" "DECLINE NOTE",
+--a."DECLINE_Category" "DECLINE CATEGORY",
+NVL(''<a class=''''btn btn-detail'''' target =''''_blank'''' href=''''/TaskInstanceView/HistoryDetail?ProcessInstanceId=''|| TO_CHAR(a."ProcessInstanceId" ) ||''&ProcessId=''||a."ProcessId" ||''&TaskId=''|| TO_CHAR(a."TaskInstanceId" ) ||''&ContainerId=''||trim(a."ContainerId")||''&TaskName=''||replace(a."TaskName",'' '','''') ||''''''>''
+|| ''Details''||''</a>'',''Details'') "ACTION"
+--NVL(''<a class=''''btn btn-detail'''' target =''''_blank'''' href=''''/TaskInstanceView/Documents?ProcessInstanceId=''|| TO_CHAR(a."ProcessInstanceId" ) ||''&ProcessId=''||a."ProcessId" ||''&TaskId=''|| TO_CHAR(a."TaskInstanceId" ) ||''&ContainerId=''||trim(a."ContainerId")||''&TaskName=''||replace(a."TaskName",'' '','''')||''&history=true'' ||''''''>''
+--|| ''Attach''||''</a>'',''Attach'') "ATTACHMENTS"
+--, a."CompletedStatus"
+--,a."ProcessInstanceId",a."IProcessInstanceId",a."Id" "TaskId",a."TaskInstanceId",a."CreateUser",a."ModifyUser",a."CreateDate",a."ModifyDate", a."StartDate"
+from (
+                SELECT  pil."BranchID" ,o."NameEn" "BranchName" , substr(pil."PamProcessDefinitionID" , 1, instr(pil."PamProcessDefinitionID",'':'') -1 ) "ContainerId",
+                substr(pil."PamProcessDefinitionID" , instr(pil."PamProcessDefinitionID",'':'') +1 , length (pil."PamProcessDefinitionID")) "ProcessId",
+                pil."PamProcessDefinitionID" , o."BranchCode", pil."ProcessInstanceId", til."IProcessInstanceId",til."Id", til."TaskName", til."TaskInstanceId", til."CreateUser", til."ModifyUser", til."CreateDate", til."ModifyDate", pil."ApplicationNo",
+                pil."StartDate" , ROW_NUMBER() OVER(PARTITION BY  til."IProcessInstanceId" ORDER BY NVL(til."ModifyDate", TIL."CreateDate") DESC, pil."StartDate" desc) LASTEST_ROW,
+                pil."ProductName", pil."CustomerName", pil."ProcessCF06" "CustomerID", pil."ProcessCF05" "CompTaxCode",
+                pil."Value",nvl(si."ProductionGroup",pil."ProcessCF04") "SaleGroup", pil."ProcessCF08", app."DECLINE_Category", app."DECLINE_Date",  app."DECLINE_Notes" ,
+                CASE WHEN app."DECLINE_Date" IS NOT NULL THEN ''Declined'' ELSE ''Approved'' END "CompletedStatus" ,
+                CASE WHEN app."DECLINE_Date" IS NOT NULL THEN ''3'' ELSE ''2'' END "CompletedStatusCD"
+                -- ''{#CurrentStatus#}'' = ''1'' -> ''all''
+                --''{#CurrentStatus#}'' = ''2'' -> ''Approved''
+                -- ''{#CurrentStatus#}'' = ''3'' -> ''Declined''
+
+        FROM "ITaskInstanceLogs" til
+                INNER JOIN "IProcessInstanceLogs" pil ON til."IProcessInstanceId" = pil."Id"
+                LEFT JOIN "SaleInfo" si ON pil."ProcessCF04" = si."StaffID"
+                LEFT JOIN "Organizations" o ON o."Id" = pil."BranchID"
+                left join (
+                select a2."APP_GEN_AppRefNo" "ApplicationNo", NVL(dec."DRP_DTL_BriefVN",  d."DECLINE_Category") "DECLINE_Category"  , d."DECLINE_Date" ,  d."DECLINE_Notes" from "Application" a2
+                inner join "Decline" d on a2."TransactionId" =d."TransactionId"
+                LEFT JOIN "AllCode" dec ON dec."DRP_CAT_Category1" = ''AD_DecCode'' AND dec."DRP_ATH_AITHERCode" = d."DECLINE_Category"
+                where d."DECLINE_Date" is not NULL
+                )app ON pil."ApplicationNo" = app."ApplicationNo"
+                inner join (SELECT "OrganizationId","UserName" FROM "Users" WHERE "UserName" = ''portaladmin'' /* AND "OrganizationId" <>43 remove 8160 Branch*/ )
+                                --inner join (SELECT 1 "OrganizationId", ''portaladmin'' "UserName" FROM dual)            
+                                usbr on instr("FU_BRANCHCHILD"(usbr."OrganizationId"),''#''||to_char(pil."BranchID")|| ''#'')>0
+                WHERE
+                --pil."PamProcessDefinitionID" IN (SELECT "ProcessName" FROM "LoanPrograms" WHERE "MainProgram" IN (''UNSECURED LOAN'',''CREDIT CARD'')) AND
+                pil."ProcessInstanceId">0
+                and pil."Status" =''2''
+                                 AND pil."ModifyDate" BETWEEN TO_DATE(''01/10/2024 00:00:00'',''DD/MM/YYYY HH24:MI:SS'') AND TO_DATE(''31/10/2024 23:59:59'',''DD/MM/YYYY HH24:MI:SS'')
+                                -- AND pil."ModifyDate" BETWEEN TO_DATE(''01/01/2000 00:00:00'',''DD/MM/YYYY HH24:MI:SS'') AND TO_DATE(''01/01/2022 23:59:59'',''DD/MM/YYYY HH24:MI:SS'')
+                                /*  Cho phep khong input dieu kien nhung van tim kiem duoc*/
+                                and ((pil."ApplicationNo" like ''%all%'' OR ''all'' LIKE ''%#pApplicationNo#%'' OR  lower(''all'') =''all'')
+                                --and (lower(pil."ProductName") like lower(''%{#pProductName#}%'') OR ''{#pProductName#}'' LIKE ''%#pProductName#%'' OR  lower(''{#pProductName#}'') =''all'')
+                                and (lower(pil."CustomerName") like lower(''%{#pCustName#}%'') OR ''{#pCustName#}'' LIKE ''%#pCustName#%'' OR  lower(''{#pCustName#}'') =''all'')
+                                and (pil."ProcessCF06" like ''%{#pCustID#}%'' OR ''{#pCustID#}'' LIKE ''%#pCustID#%'' OR  lower(''{#pCustID#}'') =''all'')
+                                and (pil."ProcessCF05" like ''%{#pCompanyTaxCode#}%'' OR ''{#pCompanyTaxCode#}'' LIKE ''%#pCompanyTaxCode#%'' OR  lower(''{#pCompanyTaxCode#}'') =''all''))
+                                and not (''{#pCustName#}'' LIKE ''%pCustName%'' AND ''all'' LIKE ''%pApplicationNo%'' AND ''{#pCustID#}'' LIKE ''%pCustID%'' and ''{#pCompanyTaxCode#}'' LIKE ''%pCompanyTaxCode%'' )
+                                /*  Khong tra ve ket qua neu khong nhap 1 trong cac dieu kien tim kiem Cust Name, Cust Id, Company TaxCode
+                                                                and (pil."ApplicationNo" like ''%all%'' OR  lower(''all'') =''all''
+                                        OR lower(pil."CustomerName") like lower(''%{#pCustName#}%'') OR  lower(''{#pCustName#}'') =''all''
+                                        OR pil."ProcessCF06" like ''%{#pCustID#}%'' OR  lower(''{#pCustID#}'') =''all''
+                                        OR pil."ProcessCF05" like ''%{#pCompanyTaxCode#}%'' OR  lower(''{#pCompanyTaxCode#}'') =''all'')
+          */
+                ) A
+               where  A.LASTEST_ROW=1
+                              and (a."CompletedStatusCD" like ''%1%'' OR ''1'' LIKE ''%#pApprovalStatus#%'' OR  ''1'' =''1'')'
+                              
+where "ReportGroup" = 'Completed Progresses'
