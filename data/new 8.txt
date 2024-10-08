@@ -69,3 +69,38 @@
 	"data": "TaskId#Fixed",
 	"fnCreatedCell": "ToDoList#RenderToDoListDetailLink@TaskAssign#RenderTaskAssignDetailLink@AllProcess#RenderAllProcessDetailLink"
 }]
+
+[{
+	"data": "Branch"
+},{
+	"data": "TaskName"
+},{
+	"data": "ApplicationNo"
+},{
+	"data": "Product"
+},{
+	"data": "CustomerName"
+},{
+	"data": "Amount"
+},{
+	"data": "ProcessCF01"
+},{
+	"data": "ProcessCF02"
+},{
+	"data": "ProcessCF03"
+},{
+	"data": "ProcessCF04"
+},{
+	"data": "Source"
+},{
+	"data": "Cob_Date"
+},{
+	"data": "Owner"
+},{
+	"data": "tat"
+},{
+	"data": "Status"
+},{
+	"data": "TaskId#Fixed",
+	"fnCreatedCell": "ToDoList#RenderToDoListDetailLink@TaskAssign#RenderTaskAssignDetailLink@AllProcess#RenderAllProcessDetailLink"
+}]
