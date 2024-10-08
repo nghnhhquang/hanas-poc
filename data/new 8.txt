@@ -2,9 +2,9 @@
   "jobDataGlossary": {
     "com.myspace.mdm_poc_workflows.JobDataGlossary": {
       "standard_code": {#standard_code#},
-      "t24": "{#t24#} - {#t24_desc#}",
-      "card": "{#card#} - {#card_desc#}",
-      "crm": "{#crm#} - {#crm_desc#}",
+      "t24": "{#t24_text#}",
+      "card": "{#card_text#}",
+      "crm": "{#crm_text#}",
       "to_date": {
         "java.util.Date":{#java.util.Date:to_date#}
       },
@@ -25,11 +25,11 @@
   Application: "jobDataGlossary:job_id",
   ProductName: "jobDataGlossary:standard_code",
   CustomerName: "jobDataGlossary:standard_name",
-  Value: "jobDataGlossary:standard_description",
-  ProcessCF01: "jobDataGlossary:t24",
-  ProcessCF02: "jobDataGlossary:card",
-  ProcessCF03: "jobDataGlossary:crm",
-  ProcessCF04: "jobDataGlossary:reject_reason",
+  ProcessCF01: "jobDataGlossary:standard_description",
+  ProcessCF02: "jobDataGlossary:t24",
+  ProcessCF03: "jobDataGlossary:card",
+  ProcessCF04: "jobDataGlossary:crm",
+  ProcessCF05: "jobDataGlossary:reject_reason",
   ProcessCF08: "jobDataGlossary:from_date",
   ProcessCF09: "jobDataGlossary:to_date",
   ProcessCF13: "jobDataGlossary:is_approved"
@@ -56,9 +56,11 @@
 },{
 	"data": "SaleInfo"
 },{
-	"data": "Source"
+	"data": "Source",
+	"fnCreatedCell": "RenderDateByDateFormat"
 },{
-	"data": "Cob_Date"
+	"data": "Cob_Date",
+	"fnCreatedCell": "RenderDateByDateFormat"
 },{
 	"data": "Owner"
 },{
@@ -81,8 +83,6 @@
 },{
 	"data": "CustomerName"
 },{
-	"data": "Amount"
-},{
 	"data": "ProcessCF01"
 },{
 	"data": "ProcessCF02"
@@ -91,9 +91,13 @@
 },{
 	"data": "ProcessCF04"
 },{
-	"data": "Source"
+	"data": "ProcessCF05"
 },{
-	"data": "Cob_Date"
+	"data": "ProcessCF08",
+	"fnCreatedCell": "RenderDateByDateFormat"
+},{
+	"data": "ProcessCF09",
+	"fnCreatedCell": "RenderDateByDateFormat"
 },{
 	"data": "Owner"
 },{
