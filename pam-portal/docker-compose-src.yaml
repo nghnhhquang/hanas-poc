@@ -2,6 +2,8 @@ services:
   redis:
     image: redis
     restart: always
+    environment:
+      TZ: Asia/Jakarta
     command: [sh, -c, "rm -f /data/dump.rdb && redis-server --save ''"]
   rhpam-iafs:
     image: nghnhhquang/pam-portal
