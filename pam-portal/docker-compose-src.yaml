@@ -1,6 +1,8 @@
 services:
   redis:
     image: redis
+    restart: always
+    command: [sh, -c, "rm -f /data/dump.rdb && redis-server --save ''"]
   rhpam-iafs:
     image: nghnhhquang/pam-portal
     restart: always

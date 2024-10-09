@@ -108,6 +108,7 @@ services:
   redis:
     image: redis
     restart: always
+    command: [sh, -c, "rm -f /data/dump.rdb && redis-server --save ''"]
   #docker run --rm --volumes-from pam-portal-postgres-1 -v $(pwd):/backup busybox tar cvf /backup/backup.tar /var/lib/postgresql/data
   #docker run --rm --volumes-from pam-portal-postgres-1 -v $(pwd):/backup busybox tar xvf /backup/backup.tar
 volumes:
