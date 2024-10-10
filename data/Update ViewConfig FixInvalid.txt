@@ -1,0 +1,60 @@
+set define off;
+Update "ProcessDefinitions" set "ViewConfig" = '[
+	{
+		"data": "Branch"
+	},
+	{
+		"data": "TaskName"
+	},
+	{
+		"data": "ApplicationNo"
+	},
+	{
+		"data": "CustomerName",
+		"fnCreatedCell": "cellcustomer"
+	},
+	{
+		"data": "Error_Dss_Code"
+	},
+	{
+		"data": "Error_Code"
+	},
+	{
+		"data": "Error_Column"
+	},
+	{
+		"data": "Error_Value"
+	},
+	{
+		"data": "Invalid_Count"
+	},
+	{
+		"data": "User_Id"
+	},
+	{
+		"data": "Branch_Id"
+	},
+	{
+		"data": "Source"
+	},
+	{
+		"data": "Cob_Date"
+,
+	        "fnCreatedCell": "RenderDateByDateFormat"
+
+	},
+	{
+		"data": "Owner"
+	},
+	{
+		"data": "tat"
+	},
+	{
+		"data": "Status"
+	},
+	{
+		"data": "TaskId#Fixed",
+		"fnCreatedCell": "ToDoList#RenderToDoListDetailLink@TaskAssign#RenderTaskAssignDetailLink@AllProcess#RenderAllProcessDetailLink"
+	}
+]'
+where "PamProcessDefinitionId" = 'MDM_POC_Workflows_1.3.0-SNAPSHOT:MDM_POC_Workflows.FixInvalidDataProcessv1'
