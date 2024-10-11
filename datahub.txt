@@ -1,0 +1,9 @@
+set the METADATA_SERVICE_AUTH_ENABLED environment variable to "true" for the datahub-gms
+ AND datahub-frontend containers / pods.
+
+
+OR
+
+change the Metadata Service application.yaml configuration file to set authentication.enabled to "true"
+ AND
+change the Frontend Proxy Service application.config configuration file to set metadataService.auth.enabled to "true"
