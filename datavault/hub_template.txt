@@ -1,0 +1,20 @@
+collision_code: T24
+columns:
+- dtype: BINARY
+  key_type: hash_key_hub
+  source:
+  - CUS_CUSTOMER_CODE
+  target: DV_HKEY_HUB_CUSTOMER
+- dtype: VARCHAR2(255 TYPE)
+  key_type: biz_key --> dấu hiệu để filter khi transform
+  source:
+    dtype: NUMBER(38,6)
+    name: CUS_CUSTOMER_CODE
+  target: CUS_CUSTOMER_CODE
+description: ''
+source_schema: LANDING
+source_table: ODS_T24D1_CUSTOMER
+target_entity_type: hub
+target_schema: RawVault
+target_table: HUB_T24_CUSTOMER
+filter: "CUS_SECTOR in (1700)"

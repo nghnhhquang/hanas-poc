@@ -1,3 +1,28 @@
+http://localhost:5001/Process/Tasks1?PamProcessId=MDM_POC_Workflows_1.8.0-SNAPSHOT:MDM_POC_Workflows.JobDataGlossaryProcessv1&TaskName=Branch%20Checker
+   case "glossary-tasks": action = "Process/Tasks1?PamProcessId=MDM_POC_Workflows_1.8.0-SNAPSHOT:MDM_POC_Workflows.JobDataGlossaryProces"; break;
+
+
+ApplicationNo - ApplicationNo
+Metas - Metas
+
+ProcessCF01 - Error_Dss_Code
+ProcessCF02 - Error_Code
+ProcessCF03 - Error_Column
+ProcessCF04 - SaleInfo
+ProcessCF05 - CompTaxCode
+
+ProcessCF06 - User_Id
+ProcessCF07 - Branch_Id
+ProcessCF08 - Source
+
+ProcessCF09 - Cob_Date
+CustomerName - CustomerName
+ProductName - Product
+ProcessCF19 - CompanyDistrict
+Value - Amount
+
+JobDataGlossaryProcessv1_Branch
+
 {
   "jobDataGlossary": {
     "com.myspace.mdm_poc_workflows.JobDataGlossary": {

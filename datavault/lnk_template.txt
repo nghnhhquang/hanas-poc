@@ -1,0 +1,27 @@
+collision_code: mdm --> source of data
+target_schema: LAKEHOUSE --> hỗ trợ chỉ 1 tên, nhu cầu nhiều sẽ cần nhiều project
+target_entity_type: lnk / hub / sat / lsat
+target_table: lnk_customer_account
+description: "" --> of table
+source_schema: ODS --> có thể nhiều source --> đang bị lủng
+source_table: loan_info --> phải tồn tại 2 key từ source của 2 hub
+columns:
+  - target: dv_hkey_lnk_customer_account --> naming convention: "dv_hkey_" + <target_table> ==> data vault hash key
+    dtype: binary --> chuẩn oracle / iceberg --> RAW / binary --> ánh xạ 1-1 trong phạm vi sử dụng ==> Toàn bảng map
+    key_type: hash_key_lnk / hash_key_hub / hash_key_sat / hash_key_lsat ==> đều là hash_key
+    source:
+      - ln_ac_nbr
+      - cst_no
+  - target: dv_hkey_hub_account
+    dtype: binary
+    key_type: hash_key_hub
+    source:
+      - ln_ac_nbr
+    parent: hub_account --> delete được
+  - target: dv_hkey_hub_customer
+    dtype: binary
+    key_type: hash_key_hub
+    source:
+      - cst_no
+    parent: hub_customer
+filter: "CUS_SECTOR in (1700)"

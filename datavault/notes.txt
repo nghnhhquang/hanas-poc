@@ -1,0 +1,9 @@
+/home/dev/dbt/dbt-oracle-mdm/ktl_dbt_oracle
+
+/home/dev/dbt/dbt-oracle-mdm/ktl_dbt_oracle/profiles.yml
+/home/dev/dbt/dbt-oracle-mdm/.env/bin/activate
+
+source .env/bin/activate
+
+/home/dev/dbt/dbt-oracle-mdm/ktl_dbt_oracle/models/lakehouse/raw_vault/batch/lsat/lsat_customer_account.sql
+/home/dev/dbt/dbt-oracle-mdm/ktl_dbt_oracle/macros/ktl_autovault_configs/lsat_customer_account_dv_config.sql

@@ -1,0 +1,33 @@
+collision_code: CARD
+columns:
+- dtype: BINARY
+  key_type: hash_key_sat
+  source: 'null'
+  target: DV_HKEY_SAT_CARD_CORP_COPMST
+- dtype: BINARY
+  key_type: hash_key_hub
+  source:
+  - CO_CORPORATE_ID
+  target: DV_HKEY_HUB_CORP
+- dtype: BINARY --> default required
+  key_type: hash_diff --> tính hash trên concat toàn bộ attributes được khai báo
+  target: DV_HSH_DIF
+- dtype: VARCHAR2(225)
+  source:
+    dtype: VARCHAR2(225)
+    name: CO_COMPANY_NAME
+  target: CO_COMPANY_NAME
+- dtype: VARCHAR2(225)
+  source:
+    dtype: VARCHAR2(225)
+    name: CO_REG_ADD_LINE1
+  target: CO_REG_ADD_LINE1
+description: ''
+filter: ''
+parent_key: DV_HKEY_HUB_CORP
+parent_table: HUB_CORP
+source_schema: LANDING
+source_table: ODS_CARDRT_CP_COPMST
+target_entity_type: sat
+target_schema: RawVault
+target_table: SAT_CARD_CORP_COPMST
